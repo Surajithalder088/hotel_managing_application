@@ -5,6 +5,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser";
 import  connectDB  from "./batabase/batabase.js";
 import customerRoute from "./routes/customer.js"
+import hotelRoute from "./routes/hotel.js"
 
 connectDB();
 
@@ -19,6 +20,7 @@ app.use(cors({
     methods:"GET,POST,PUT,DELETE"
 }))
 app.use('/api/customer',customerRoute)
+app.use('/api/hotel',hotelRoute)
 app.get("/",(req,res)=>{
     res.send(" working")
 })

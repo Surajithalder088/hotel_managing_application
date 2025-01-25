@@ -1,4 +1,4 @@
-import customerModel from "../models/customer.js"
+import hotelModel from "../models/hotel.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import "dotenv/config.js"
@@ -11,12 +11,12 @@ export const register=async (req,res)=>{
         return res.status(400).json({message:"all field required"})
     }
     try{
-        const existingUser=await customerModel.findOne({email:email})
+        const existingUser=await hotelModel.findOne({email:email})
         if(existingUser){
             return res.status(400).json({message:"user already exist"})
         }
         const hashPassword= await bcrypt.hash(password,10)
-        const newUser= await customerModel.create({email,password:hashPassword})
+        const newUser= await hotelModel.create({email,password:hashPassword})
         const token=jwt.sign({email:newUser.email},process.env.JWT_SECRET,{expiresIn:'24h'})
         
        
@@ -39,7 +39,7 @@ export const login=async (req,res)=>{
         return res.status(400).json({message:"all field required"})
     }
     try{
-        const existingUser=await customerModel.findOne({email:email})
+        const existingUser=await hotelModel.findOne({email:email})
         if(!existingUser){
             return res.status(400).json({message:"user does not  exist"})
         }
@@ -67,7 +67,7 @@ export const login=async (req,res)=>{
 export const profile=async (req,res)=>{
 
     const user=req.user ||"hhhhhh"
-    const authUser= await customerModel.findOne({email:user.email})
+    const authUser= await hotelModel.findOne({email:user.email})
     if(!authUser){
         return res.status(400).json({message:" user not find"})
      }
