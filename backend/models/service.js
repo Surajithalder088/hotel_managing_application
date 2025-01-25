@@ -6,11 +6,13 @@ const serviceSchema= new mongoose.Schema({
     require:true,
   },
   hotel:{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'hotel',
     require:true
   },
   buyer:[{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'customer'
   }],
   price:{
     type:Number,
