@@ -16,7 +16,8 @@ const customerSchema= new mongoose.Schema({
      ref:'service'
   }],
   receipts:[{
-    type:String
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'receipt'
   }]
 },{timestamps:true})
 
