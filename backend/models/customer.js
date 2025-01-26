@@ -12,7 +12,8 @@ const customerSchema= new mongoose.Schema({
     require:true
   },
   takenServices:[{
-    type:String,
+     type:mongoose.Schema.Types.ObjectId,
+     ref:'service'
   }],
   receipts:[{
     type:String
