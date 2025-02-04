@@ -25,7 +25,7 @@ export default function Home() {
    <div className="home">
    <div className='navbarContainer'> 
     <div className="logo">
-      <h1>sito</h1>
+      <h1>SITO</h1>
     </div>
     <div className="searchContainer">
       <img src="search-line.png"/>

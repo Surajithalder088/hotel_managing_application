@@ -1,5 +1,6 @@
 .serviceContainer{
-    background-color: rgb(179, 179, 184);
+
+    background-color: rgba(218, 218, 218, 0.397);
     color: rgb(63, 64, 65);
    width: 20%;
     padding: 18px;
@@ -81,4 +82,5 @@
 .btn:hover{
     background-color: rgb(112, 132, 248);
     color: #000;
+    cursor: pointer;
 }

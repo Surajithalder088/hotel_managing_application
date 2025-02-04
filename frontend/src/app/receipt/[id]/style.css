@@ -1,0 +1,79 @@
+.receiptBody{
+background: #bdbcbc;
+color: aliceblue;
+padding: 30px;
+display: flex;
+
+justify-content: space-around;
+align-items: center;
+}
+.first{
+    width: 50%;
+}
+.first p{
+ color: rgb(57, 62, 66);
+ font-size: 30px;
+ font-weight: 900;
+
+}
+.second{
+    width: 50%;
+}
+.second p{
+    color: rgb(57, 62, 66);
+    font-size: 30px;
+    font-weight: 900;
+   
+   }
+   .price{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   }
+   .payment{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+   }
+   .payment span{
+    color: rgb(117, 116, 116);
+    font-size: 20px;
+    font-weight: 600;
+   }
+   .rupee{
+    width: 15px;
+   }
+.paybtn{
+    background-color: aqua;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+}
+.paybtn:hover{
+    cursor: pointer;
+    background-color: rgb(0, 60, 255);
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+}
+.variable{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-family: monospace;
+}
+.done{
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.pending{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(168, 7, 29);
+    border-radius: 50%;
+    border: 1px solid black;
+}

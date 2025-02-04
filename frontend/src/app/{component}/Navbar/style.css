@@ -6,6 +6,14 @@
     display: flex;
 
 }
+.icon{
+    background: #fff;
+    padding: 10px;
+    border-radius: 50%;
+ }
+ .icon:hover{
+     padding: 18px;
+ }
 .logo{
     display: flex;
     align-items: center;

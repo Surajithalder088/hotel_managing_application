@@ -1,0 +1,16 @@
+.user{
+    background-color: rgb(118, 196, 176);
+    padding: 30px ;
+    font-size: 40px;
+    width: 100%;
+}
+
+
+.receipts{
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    text-decoration: none;
+    }

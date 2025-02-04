@@ -1,0 +1,22 @@
+
+    .receipt{
+        background-color: rgb(182, 238, 189);
+        padding: 20px;
+        margin: 10px;
+        display: flex;
+    text-decoration: none;
+    color: #000;
+    
+
+    }
+    .hotel{
+        background: #000;
+        color: #fff;
+        padding: 10px;
+        font-size: 30px;
+        
+    }
+    .data{
+        padding: 10px;
+        font-size: 20px;
+    }

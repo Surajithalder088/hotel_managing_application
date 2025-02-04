@@ -1,19 +1,21 @@
 import Link from "next/link"
 import "./style.css"
+import homeIcon from '../../../../public/home-2-fill.png'
+import userIcon from '../../../../public/user-3-fill.png'
 
 const Navbar = () => {
   return (
     <div className='navbarContainer'> 
     <div className="logo">
-      <h1>sito</h1>
+      <h1>  SITO</h1>
     </div>
    
       <div className="links" >
         <Link href={'/'}>
-        <h3>home</h3>
+        <img src='/home-2-fill.png' className="icon" />
         </Link>
         <Link href={'/profile'}>
-        <h3>profile</h3>
+        <img src='/user-3-fill.png'  className="icon"  />
         </Link>
       </div>
    
