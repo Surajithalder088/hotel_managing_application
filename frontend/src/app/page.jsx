@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import "./app.css"
 import { services } from "@/assets/service";
-
+import Service from "./{component}/Service/page"
+import Navbar from "./{component}/Navbar/page";
+import { useState } from "react";
 const links=[
   {id:1,name:"hotel abc",price:450},
   {id:2,name:"hotel tyf",price:450},
@@ -12,19 +15,47 @@ const links=[
 ]
 
 export default function Home() {
+
+  const [searchTerm,setSearchTerm]=useState("")
+
+  const filterData=searchTerm.trim()===""?services :
+  services.filter((item)=>item.hotelName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+
   return (
-   <div className="h-screen flex bg-slate-900 text-slate-50">
-    <div className="sList flex ">
+   <div className="home">
+   <div className='navbarContainer'> 
+    <div className="logo">
+      <h1>sito</h1>
+    </div>
+    <div className="searchContainer">
+      <img src="search-line.png"/>
+    <input 
+    type="text"
+    placeholder="Serch items or hotel name"
+    value={searchTerm}
+    onChange={(e)=>setSearchTerm(e.target.value)}
+    className="searchBar"
+    /></div>
+   
+      <div className="links" >
+        <Link href={'/'}>
+       <img src="home-2-fill.png" className="icon" />
+        </Link>
+        <Link href={'/profile'}>
+        <img src="user-3-fill.png"  className="icon"  />
+        </Link>
+      </div>
+   
+    </div>
+    <div className="nav">demonav</div>
+    <div className="sList"
+    style={{
+      width: "100vw"
+    }}
+    >
       {
-        services.map(l=>(
-        <div key={l.id} className="flex flex-col">
-          <div>{l.type}</div>
-          <div>{l.hotelName}</div>
-          <div>{l.price}</div>
-          <div>{l.buyerOfService}</div>
-          <div>{l.details}</div>
-        <Link href={`/service/${l.id}`}>click here</Link>
-          </div>
+        filterData.map(service=>(
+       <Service l={service} key={service.id} />
         ))
       }
       

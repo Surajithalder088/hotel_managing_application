@@ -2,18 +2,18 @@ export const services=[
     {
         id:1,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"vishnu hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
         price:450,
-        details:"this is a room service of three days two night",
+        details:"this is a jhgu ugiuiuhi iuoiuh uhgyoii iu 6u776  798  room service of three days two night",
         craeteAt:"2021-09-01",
     },
     {
         id:2,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"ram hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
@@ -24,7 +24,7 @@ export const services=[
     {
         id:3,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"krishna hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
@@ -35,7 +35,7 @@ export const services=[
     {
         id:4,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"ganesh hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
@@ -46,7 +46,7 @@ export const services=[
     {
         id:5,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"hanuman hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
@@ -57,7 +57,7 @@ export const services=[
     {
         id:6,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"kartik hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,
@@ -68,7 +68,7 @@ export const services=[
     {
         id:7,
         type:"room",
-        hotelName:"abc hotel",
+        hotelName:"shiva hotel",
         hotelTotalService:3,
         hotelRegisterd:"2021-09-01",
         buyerOfService:4,

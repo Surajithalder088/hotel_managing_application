@@ -1,0 +1,60 @@
+.home{
+    height: 100vh;
+}
+.nav{
+    height: 5rem;
+    background-color: aqua;
+}
+.navbarContainer{
+    width: 100vw;
+    height: 5rem;
+    background: #696868;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+.searchContainer{
+    width: 350px ;
+    height: 2.3rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.searchBar{
+    width: 300px ;
+    height: 1.8rem;
+    outline: #fff;
+  
+}
+.links{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 300px;
+}
+.logo h1{
+    font-size: 30px;
+}
+.icon{
+   background: #fff;
+   padding: 10px;
+   border-radius: 50%;
+}
+.icon:hover{
+    padding: 18px;
+}
+.sList{
+    display: flex;
+   flex-wrap: wrap;
+}

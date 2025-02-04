@@ -1,0 +1,22 @@
+.navbarContainer{
+    width: 100vw;
+    height: 5rem;
+    background: #000;
+    color: #fff;
+    display: flex;
+
+}
+.logo{
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+.links{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 300px;
+}
+.logo h1{
+    font-size: 30px;
+}
