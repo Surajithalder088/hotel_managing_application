@@ -7,6 +7,7 @@ import { services } from "@/assets/service";
 import Service from "./{component}/Service/page"
 import Navbar from "./{component}/Navbar/page";
 import { useState } from "react";
+import { fetchingServiceList } from "@/utils/api";
 const links=[
   {id:1,name:"hotel abc",price:450},
   {id:2,name:"hotel tyf",price:450},
@@ -25,7 +26,14 @@ export default function Home() {
    <div className="home">
    <div className='navbarContainer'> 
     <div className="logo">
-      <h1>SITO</h1>
+      <h1 >SITO</h1>
+      <button
+      onClick={()=>{
+        const list=fetchingServiceList()
+        console.log(list);
+        
+      }}
+      >fetch</button>
     </div>
     <div className="searchContainer">
       <img src="search-line.png"/>
