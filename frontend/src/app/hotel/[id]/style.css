@@ -1,0 +1,41 @@
+.hotelContainer{
+    margin: 0;
+    padding: 0;
+    background: #bb91eb;
+
+}
+.aboutehotelContainer{
+    margin: -1rem 0 1rem  0;
+    background: #644588;
+    color: #fff;
+    height: 45vh;
+    display: flex;
+}
+.aboutehotel{
+    background-color: #2f115e;
+    margin: 20px;
+    height: 70%;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+.hotelname{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    font-size:40px ;
+}
+.hotelimg{
+    height: 80%;
+    width: full;
+    margin-top: 1.8rem;
+    border-radius: 10px;
+}
+.aboute{
+    font-size: 20px;
+}
+
+
+.allservices{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,11 +1,38 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useRef } from 'react'
 import "./style.css"
+import { motion, useInView } from 'motion/react'
+
+
+
+const divVariant={
+  initial:{
+    y:100,
+    opacity:0
+},
+  animate:{
+    y:0,
+    opacity:1,
+    transition:{
+      duration:2.7,
+      straggerChildren:0.2
+    }
+  }
+}
 
 const Service = ({l}) => {
+
+const ref=useRef()
+const   isInView=useInView(ref,{margin:"-200px"})
   return (
-    <div key={l.id} className="serviceContainer">
+    <motion.div 
+    variants={divVariant}
+    animate={"animate"}
+    initial='initial'
+    key={l.id} className="serviceContainer" ref={ref}>
+      <Link href={`/hotel/${l.id}`}>
         <div className='hotelName'>{l.hotelName}</div>
+        </Link>
             <div className="desc1">
             <div className='type'>Service Type is : {l.type}</div>
           <div className='details'>
@@ -22,7 +49,7 @@ const Service = ({l}) => {
         <Link className='link' href={`/service/${l.id}`}>
         <button className='btn'>View Details</button>
         </Link>
-          </div>
+          </motion.div>
   )
 }
 
