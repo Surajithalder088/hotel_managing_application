@@ -30,6 +30,7 @@ body{
 .abouteService{
     display: flex;
     flex-direction: column;
+    gap: 3px;
     justify-content: first baseline;
     background-color: #76539485;
     border-radius: 20px;
@@ -63,6 +64,7 @@ body{
 .abouteHotel{
     display: flex;
     flex-direction: column;
+    gap: 3px;
     background-color: #f0ecec;
     color: #000;
     border-radius: 20px;
@@ -90,5 +92,31 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
     
+}
+.reviewContainer{
+    display: flex;
+    flex-direction: column;
+    
+    background: #cfcece;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100vw;
+}
+.reviewContainer h3{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+}
+.reviewList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.review{
+    background: #fcfbfb;
+    padding: 10px;
+    width: 20%;
+    margin: 5px;
+    border-radius: 10px;
+
 }

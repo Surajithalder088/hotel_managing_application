@@ -4,6 +4,7 @@ import "./style.css"
 import { redirect, useParams } from 'next/navigation'
 import React from 'react'
 import { services } from "@/assets/service";
+import { reviews } from "@/assets/review";
 import Navbar from '@/app/{component}/Navbar/page';
 import { motion, useInView } from 'motion/react'
 
@@ -56,6 +57,13 @@ const Service = () => {
 
    
     <div className="service">
+    <div className="orderBtn">
+        <button
+        onClick={()=>{
+          redirect(`/receipt/${id}`)
+        }}
+        className="btn">Order Now</button>
+       </div>
       <div className="card">
         <motion.div 
         variants={serviceVariant}
@@ -80,13 +88,22 @@ const Service = () => {
         </motion.div>
         
        </div>
-       <div className="orderBtn">
-        <button
-        onClick={()=>{
-          redirect(`/receipt/${id}`)
-        }}
-        className="btn">Order Now</button>
+
+       <div className="reviewContainer">
+        <h3>Customer Ratings:</h3>
+        <div className="reviewList">
+        {
+          reviews.map(r=>(
+            <div className="review" key={r.id}>
+              <p>customer id :{r.user}</p>
+              <p>star : {r.ratings}</p>
+              <p>{r.text}</p>
+            </div>
+          ))
+        }
        </div>
+       </div>
+     
     </div>
     
     </>

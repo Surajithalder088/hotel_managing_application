@@ -39,7 +39,7 @@ export default function Home() {
       <img src="search-line.png"/>
     <input 
     type="text"
-    placeholder="Serch items or hotel name"
+    placeholder="Search items or hotel name"
     value={searchTerm}
     onChange={(e)=>setSearchTerm(e.target.value)}
     className="searchBar"

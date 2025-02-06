@@ -57,6 +57,7 @@
     padding: 18px;
 }
 .sList{
+    margin-top: 40px;
     display: flex;
    flex-wrap: wrap;
 }
