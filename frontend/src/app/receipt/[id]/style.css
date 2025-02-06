@@ -12,7 +12,7 @@ align-items: center;
 }
 .first p{
  color: rgb(57, 62, 66);
- font-size: 30px;
+ font-size: 20px;
  font-weight: 900;
 
 }
@@ -21,7 +21,7 @@ align-items: center;
 }
 .second p{
     color: rgb(57, 62, 66);
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 900;
    
    }
@@ -59,7 +59,7 @@ align-items: center;
 }
 .variable{
     color: rgb(0, 0, 0);
-    font-size: 30px;
+    font-size: 20px;
     font-family: monospace;
 }
 .done{
@@ -76,4 +76,28 @@ align-items: center;
     background-color: rgb(168, 7, 29);
     border-radius: 50%;
     border: 1px solid black;
+}
+
+.reviewbox{
+    width: 410px;
+    background: #f5f2f2;
+    padding: 5px;
+    border-radius: 5px;
+}
+.reviewform{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.star{
+    display: flex;
+}
+.starimg{
+    width: 25px;
+}
+.reviewform textarea{
+    width: 380px;
+    height: 50px;
+    padding: 10px;
+    font-size: 14px;
 }
