@@ -30,8 +30,8 @@ const   isInView=useInView(ref,{margin:"-200px"})
     animate={"animate"}
     initial='initial'
     key={l.id} className="serviceContainer" ref={ref}>
-      <Link href={`/hotel/${l.id}`}>
-        <div className='hotelName'>{l.hotelName}</div>
+      <Link href={`/hotel/${l._id}`}>
+        <div className='hotelName'>{l.hotel.email}</div>
         </Link>
             <div className="desc1">
             <div className='type'>Service Type is : {l.type}</div>
@@ -44,9 +44,9 @@ const   isInView=useInView(ref,{margin:"-200px"})
           <div className='price'>
             <img src='/rupee-indian.png' className='rupee'/>
               {l.price} </div>
-          <div className='buyer'>Number of Buyer : {l.buyerOfService}</div>
+          <div className='buyer'>Number of Buyer : {l.buyer.length}</div>
           </div>
-        <Link className='link' href={`/service/${l.id}`}>
+        <Link className='link' href={`/service/${l._id}`}>
         <button className='btn'>View Details</button>
         </Link>
           </motion.div>

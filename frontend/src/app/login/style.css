@@ -65,3 +65,6 @@
     background-color: #3b0d0d;
     color: #fff;
 }
+.load{
+    cursor: progress;
+}

@@ -3,10 +3,23 @@
 import React, { useState } from 'react'
 import "./style.css"
 import Link from 'next/link'
+import { loginApi } from '@/utils/authApi'
 
 const login = () => {
+    const [loading,setLoading]=useState(false)
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
+
+    const loginHandler=async(e)=>{
+        e.preventDefault()
+        setLoading(true)
+       const data=await loginApi({email,password})
+      
+       console.log(data);
+       
+       setLoading(false)
+       
+    }
   return (
    <>
    <div className="loginContainer">
@@ -17,11 +30,7 @@ const login = () => {
         <h3>Login</h3>
         <div className="form">
             
-            <form onSubmit={
-                ()=>{
-                    console.log(`email is :${email}, password is :${password}`)
-                }
-            }>
+            <form onSubmit={ loginHandler}>
                 <input
                  type='email'
                  placeholder='Enter Your Email'
@@ -32,7 +41,7 @@ const login = () => {
                  placeholder='Enter Your password'
                  onChange={(e)=>setPassword(e.target.value)}
                  />
-                 <button  type='submit'>Login</button>
+                 <button className={loading?"load":"loginbtn"} type='submit'>{loading?"Loading..":"Login"}</button>
             </form>
         </div>
         <p className='p'>New Customer?Register first :<Link href={'/register'}>Register</Link></p>

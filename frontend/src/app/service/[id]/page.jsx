@@ -2,11 +2,12 @@
 import "./style.css"
 
 import { redirect, useParams } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { services } from "@/assets/service";
 import { reviews } from "@/assets/review";
 import Navbar from '@/app/{component}/Navbar/page';
 import { motion, useInView } from 'motion/react'
+import axios from "axios";
 
 const links=[
     {id:1,name:"hotel abc",price:450},
@@ -44,10 +45,36 @@ const links=[
     }
   }
 
-const Service = () => {
+  const api="http://localhost:7070"
 
+const Service = () => {
+ const [service,setService]=useState({})
     const {id} =useParams()
-    const service=services.find(l=>l.id===Number(id))
+   // const service=services.find(l=>l.id===2)
+    
+
+    const fetchServiceDetails=async()=>{
+      try{
+         const data= await axios.get(api+`/api/service/${id}`,{withCredentials:true})
+         let obj=data.data.service
+         
+          setService(obj)
+         console.log(obj);
+         
+      }catch(error){
+        console.log(error);
+        
+      }
+    }
+
+    useEffect(() => {
+     
+      fetchServiceDetails()
+    console.log(service);
+    
+     
+    }, [service])
+    
 
   return (
     <>
@@ -55,12 +82,21 @@ const Service = () => {
    <Navbar/>
    <div className="nav">navbar</div>
 
-   
-    <div className="service">
+    {
+        !service._id?(<div className="loading">
+            loading
+        </div>)
+        :
+   ( <div className="service">
+     
+
+     
     <div className="orderBtn">
         <button
         onClick={()=>{
           redirect(`/receipt/${id}`)
+        
+         
         }}
         className="btn">Order Now</button>
        </div>
@@ -72,19 +108,19 @@ const Service = () => {
         className="abouteService">
       <div className="id"> Service id :{id}</div> 
         <p><div className="value">Service provided : </div>{service.type}</p>
-       <p><div className="value">Total Buyer of this Service : </div>{service.buyerOfService}</p>
+       <p><div className="value">Total Buyer of this Service : </div>{service.buyer.length}</p>
         <p><div className="value"> Price : </div>{service.price}</p>
         <p><div className="value"> Details of the Service : </div>{service.details}</p>
-        <span> Service generated at : {service.craeteAt}</span>
+        <span> Service generated at : {service.createdAt}</span>
         </motion.div>
         <motion.div className="abouteHotel"
         variants={hotelVariant}
         initial='initial'
         animate='animate'
         >
-        <p><div className="value"> Name of the Provider : </div> {service.hotelName}</p>
-        <p><div className="value"> Number of Services provided by this provider : </div>{service.hotelTotalService}</p>
-        <p><div className="value"> Hotel Registered At : </div>{service.hotelRegisterd}</p>
+        <p><div className="value"> Name of the Provider : </div> {service.hotel.email}</p>
+        <p><div className="value"> Number of Services provided by this provider : </div>{service.hotel.services.length}</p>
+        <p><div className="value"> Hotel Registered At : </div>{service.hotel.createdAt}</p>
         </motion.div>
         
        </div>
@@ -103,8 +139,10 @@ const Service = () => {
         }
        </div>
        </div>
-     
-    </div>
+
+    </div>)
+}
+
     
     </>
   )

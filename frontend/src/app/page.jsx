@@ -6,8 +6,8 @@ import "./app.css"
 import { services } from "@/assets/service";
 import Service from "./{component}/Service/page"
 import Navbar from "./{component}/Navbar/page";
-import { useState } from "react";
-import { fetchingServiceList } from "@/utils/api";
+import { useEffect, useState } from "react";
+//import { fetchingServiceList } from "@/utils/api";
 const links=[
   {id:1,name:"hotel abc",price:450},
   {id:2,name:"hotel tyf",price:450},
@@ -15,13 +15,44 @@ const links=[
   {id:4,name:"hotel wrd",price:450}
 ]
 
+import axios from "axios"
+
+const api="http://localhost:7070"
+
+
+
 export default function Home() {
 
   const [searchTerm,setSearchTerm]=useState("")
+  const [services,setServices]=useState([])
 
   const filterData=searchTerm.trim()===""?services :
   services.filter((item)=>item.hotelName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
+
+  const fetchingServiceList=async()=>{
+    try{
+      const list= await axios.get(api+'/api/service/service-all')
+      console.log(list.data.allServices);
+      setServices(list.data.allServices)
+    
+    }catch(error){
+      console.log(data);
+      
+    }
+    
+    
+  }
+
+  useEffect(() => {
+   
+ fetchingServiceList()
+ 
+  console.log(services);
+  
+    
+  }, [])
+  
   return (
    <div className="home">
    <div className='navbarContainer'> 
@@ -29,8 +60,9 @@ export default function Home() {
       <h1 >SITO</h1>
       <button
       onClick={()=>{
-        const list=fetchingServiceList()
-        console.log(list);
+        fetchingServiceList()
+      console.log(services);
+      
         
       }}
       >fetch</button>
@@ -63,7 +95,7 @@ export default function Home() {
     >
       {
         filterData.map(service=>(
-       <Service l={service} key={service.id} />
+       <Service l={service} key={service._id} />
         ))
       }
       
