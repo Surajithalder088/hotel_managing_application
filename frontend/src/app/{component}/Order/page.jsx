@@ -2,8 +2,12 @@
 
 import React from 'react'
 import "./style.css"
+import { format } from 'date-fns'
 
 const Order = ({item}) => {
+
+   const orderDate= !item._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
+      format(new Date(item.createdAt ),'dd MMM yyyy,hh:mm a')
   return (
     <>
     <div className="receipt" >
@@ -18,12 +22,12 @@ const Order = ({item}) => {
                
                <p><div className="variable">payment</div>{item.paid?"paid":"pending"}</p>
                {
-                item.paid?<div className="done"></div>
+                item.paid?<div className="donee"></div>
                 :
-                <div className="pending"></div>
+                <div className="pendingg"></div>
                }
                <p><div className="variable">Service Taken :</div>{item.details}</p>
-               <p><div className="variable">Order Date :</div>{item.createdAt}</p>
+               <p><div className="variable">Order Date :</div>{orderDate}</p>
                </div>
                   
              </div>

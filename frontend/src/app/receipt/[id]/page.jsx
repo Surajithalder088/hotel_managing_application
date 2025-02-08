@@ -1,10 +1,12 @@
 "use client"
 import Navbar from "@/app/{component}/Navbar/page";
 import { receipts } from "@/assets/receipt";
-import { useParams } from 'next/navigation'
+import { redirect, useParams } from 'next/navigation'
 import React, { useState,useEffect } from 'react'
 import "./style.css"
 import axios from 'axios'
+import {format} from 'date-fns'
+import { CircularProgress } from "@mui/material";
 
 
 
@@ -17,11 +19,11 @@ const Receipt = () => {
 
       const [receipt,setReceipt]=useState([])
       const [service,setService]=useState([])
-      const [paid,setPaid]=useState(receipt.paid)
-      const [reviewed,setReviewed]=useState(receipt.paid)
-      const[starvalue,setStarvalue]=useState(0)
-      const [reviewText,setReviewText]=useState("")
+      
+      const[starvalue,setStarvalue]=useState(1)
+      const [reviewText,setReviewText]=useState("default review")
       const starArray=[1,2,3,4,5]
+     
 
 
       const fetchReceiptDetails= async()=>{
@@ -31,12 +33,38 @@ const Receipt = () => {
        setService(data.data.service)
        
       }
-      useEffect(() => {
+   useEffect(() => {
        fetchReceiptDetails()
       
        
       }, [])
+      const [paid,setPaid]=useState(receipt.paid)
+      const [reviewed,setReviewed]=useState(false)
+
+      const reviewCreate=async(e)=>{
+        e.preventDefault()
+        try{
+           setReviewed(true)
+           const data= await axios.post(api+`/api/review/review-create`,
+          {text :reviewText,ratings:starvalue,serviceid:receipt.serviceId,receiptId:id},
+          {withCredentials:true}
+        )
+        console.log(data.data);
+       
+        redirect(`/`)
+        }catch(error){
+          console.log(error);
+          setReviewed(false)
+          redirect(`/`)
+        }
       
+
+      }
+      
+ const receiptDate= receipt.length===0 ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
+ format(new Date(receipt?.createdAt || Date.now()),'dd MMM yyyy,hh:mm a')
+ const hotelDate=receipt.length===0 ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
+ format(new Date(service?.hotel.createdAt|| Date.now()),'dd MMM yyyy,hh:mm a')
 
   return (
     <>
@@ -54,12 +82,12 @@ const Receipt = () => {
 
     <div className="receiptBody">
       <div className="first">
-    <h2> Receipt Generated for Service : {id}</h2>
+    <h2> Receipt Generated for Service : {receipt.serviceId}</h2>
 
       <p> <div className="variable">Receipt id :</div>{receipt._id}</p>
       <p><div className="variable">service.Type: </div>{receipt.type}</p>
       <p><div className="variable">Provider Name: </div>{receipt.hotelName}</p>
-      <p><div className="variable">hotel Registered at : </div>{service.hotel.createdAt}</p>
+      <p><div className="variable">hotel Registered at : </div>{hotelDate}</p>
       
         <p><div className="variable">Total payable Price: </div>
       <img src="/rupee-indian.png" className="rupee"/>
@@ -75,7 +103,9 @@ const Receipt = () => {
         <div className="payment">
           <span>Make payment :</span>
         <button className="paybtn"
-        onClick={fetchReceiptDetails}
+        onClick={()=>{
+          redirect(`/payment/${id}`)
+        }}
         >pay</button>
         </div>
         :""
@@ -88,10 +118,14 @@ const Receipt = () => {
         <div className="pending"></div>
       }
      </div>
-      <p><div className="variable">receipt generated at : </div>{receipt.createdAt}</p>
+      <p><div className="variable">receipt generated at : </div>{receiptDate}</p>
      <div className="reviewbox">
       {
-        !reviewed?<div className="reviewform">
+        receipt.reviewed?(
+          <div className="reviewform">
+        <p>You already reviewed</p></div>
+      ):
+        (<div className="reviewform">
           <div className="star">
             {
               starArray.map(s=>(
@@ -111,14 +145,16 @@ const Receipt = () => {
          onChange={(e)=>setReviewText(e.target.value)}
          ></textarea>
           <button
-          onClick={()=>{
-            console.log({reviewText,starvalue});
-            
-          }}
+          onClick={reviewCreate}
           className="btn"
-          >Submit</button>
-        </div>:
-        <p>You already reviewed</p>
+          >{
+            reviewed?(<CircularProgress />)
+            :"submit"
+          }
+           
+          </button>
+        </div>)
+        
       }
      </div>
      

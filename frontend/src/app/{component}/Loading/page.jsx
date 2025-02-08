@@ -1,11 +1,13 @@
+import { CircularProgress, LinearProgress } from '@mui/material'
 import React from 'react'
+import "./style.css"
 
 const Loading = () => {
   return (
     <>
     <div className="loadingContainer">
         <div className="loading">
-            loading
+        <CircularProgress/>
         </div>
     </div>
     </>
