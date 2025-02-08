@@ -99,7 +99,7 @@ const Receipt = () => {
       
       
       {
-        !paid?
+        !receipt.paid?
         <div className="payment">
           <span>Make payment :</span>
         <button className="paybtn"
@@ -113,7 +113,7 @@ const Receipt = () => {
       <div className="price">
       <p><div className="variable">paid : </div>{paid?"yes":"no"}</p>
       {
-        paid? <div className="done"></div>
+        receipt.paid? <div className="done"></div>
         :
         <div className="pending"></div>
       }
