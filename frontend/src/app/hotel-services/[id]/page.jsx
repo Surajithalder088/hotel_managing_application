@@ -1,0 +1,127 @@
+"use client"
+
+import "./style.css"
+import { useParams } from 'next/navigation'
+import React ,{useEffect, useState} from 'react'
+
+import { services } from "@/assets/service"
+import Service from "@/app/{component}/HotelService/page"
+import Navbar from "@/app/{component}/Navbar/page"
+import axios from 'axios'
+
+
+
+const api="http://localhost:7070"
+
+
+const Hotel= () => {
+    const {id}=useParams()
+   // const hotel=services.find(l=>l.id===1)
+   const [hotel,setHotel]=useState(null)
+   const [services,setServices]=useState([])
+   const [editId,setEditId]=useState("")
+
+    const hotelByid=async()=>{
+     const data= await axios.get(api+`/api/hotel/hotelbyid/${id}`,{withCredentials:true})
+     console.log(data.data);
+     setHotel(data.data.hotel)
+     setServices(data.data.services)
+    }
+    useEffect(() => {
+      hotelByid()
+    
+    }, [])
+
+    const [type,setType]=useState('room')
+    const [name,setName]=useState("")
+    const [price,setPrice]=useState("")
+    const [details,setDetails]=useState("")
+  
+
+    
+  return (
+   <>
+   <div className="hotelContainer">
+    
+   
+
+    <div className="aboutehotelContainer">
+      {
+        !hotel ?(
+          <div className="aboutehotel">
+            <p>failed to get hotel data</p>
+          </div>
+        ):(
+
+        
+        <div className="aboutehotel">
+            <p className="hotelname">Email of this hotel is : {hotel.email}</p>
+          
+            <p className="aboute">Totel Service Provided : {hotel.services.length}</p>
+            <p  className="aboute">This hotel is Registered at : {hotel.createdAt}</p>
+
+        </div>
+        )
+      }
+      <div className="newform">
+       
+        <form>
+           <h5>Add new service to your hotel:</h5>
+           <select value={type} onChange={(e)=>{setType(e.target.value)}}>
+            <option value='room'>room</option>
+            <option value='restaurant'>restaurant</option>
+           
+           </select>
+          
+          <input type="text"
+          value={name}
+          placeholder="Give service name"
+          onChange={(e)=>{
+            setName(e.target.value)
+          }}
+          />
+          <input type="number"
+          value={price}
+          placeholder="Give service price"
+          onChange={(e)=>{
+            setPrice(e.target.value)
+          }}
+          />
+          <textarea value={details}
+          placeholder="Give service details" 
+          onChange={(e)=>{
+            setDetails(e.target.value)
+          }}
+          ></textarea>
+          <button className="add">Add new service</button>
+        </form>
+      </div>
+    </div>
+
+   
+    {
+      (services.length===0)?(
+        <div className="allservices">
+         <p> no services provided</p>
+        </div>
+      ):(
+<>
+      <h3>All services of this Hotel :</h3>
+    <div className="allservices">
+     
+   {
+        services.map(service=>(
+       <Service l={service} key={service.id} />
+        ))
+        
+      }
+    </div>
+    </>
+     )
+    }
+   </div>
+   </>
+  )
+}
+
+export default Hotel

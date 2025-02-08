@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation'
 
 const api='http://localhost:7070'
 
-const Register = () => {
+const hotelRegister = () => {
     const[email,setEmail]=useState("")
     const[name,setName]=useState("")
     const[password,setPassword]=useState("")
@@ -17,7 +17,7 @@ const Register = () => {
     const apiregister=async(e)=>{
         e.preventDefault()
         try{
-     const res= await axios.post(api+`/api/customer/register`,{name,email,password})
+     const res= await axios.post(api+`/api/hotel/register`,{name,email,password})
      console.log(res.data);
      redirect('/')
      
@@ -31,7 +31,7 @@ const Register = () => {
    <>
    <div className="loginContainer">
     <div className="card">
-        <h3>Register</h3>
+        <h3>Register to Hotel's Account</h3>
         <div className="formR">
             
             <form onSubmit={apiregister}>
@@ -60,4 +60,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default hotelRegister

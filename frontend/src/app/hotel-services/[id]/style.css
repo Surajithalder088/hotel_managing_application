@@ -1,0 +1,76 @@
+.hotelContainer{
+    margin: 0;
+    padding: 0;
+    background: #bb91eb;
+
+}
+.aboutehotelContainer{
+    margin: -1rem 0 1rem  0;
+    background: #644588;
+    color: #fff;
+    height: 47vh;
+    display: flex;
+    object-fit: contain;
+}
+.aboutehotel{
+    background-color: #2f115e;
+    margin: 20px;
+    height: 70%;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+.hotelname{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    font-size:30px ;
+}
+.hotelimg{
+    height: 80%;
+    width: full;
+    margin-top: 1.8rem;
+    border-radius: 10px;
+}
+.aboute{
+    font-size: 20px;
+}
+.newform{
+    width: 400px;
+    height: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
+   
+}
+.newform form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+    background: #b4b0b0;
+    border-radius: 10px;
+}
+.newform form h5{
+    color: #000;
+    font-weight: 200;
+    font-size: 20px;
+}
+.newform form input{
+    padding: 5px;
+    font-size: 12px;
+    width: 90%;
+}
+.newform form textarea{
+    padding: 5px;
+    font-size: 12px;
+    width: 90%;
+}
+
+
+.allservices{
+    display: flex;
+    flex-wrap: wrap;
+}

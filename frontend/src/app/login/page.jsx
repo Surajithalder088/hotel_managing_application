@@ -18,7 +18,7 @@ const login = () => {
       
        console.log(data);
        
-       setLoading(false)
+      
        redirect('/')
        
     }
