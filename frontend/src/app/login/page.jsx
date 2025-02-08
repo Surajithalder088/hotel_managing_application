@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import "./style.css"
 import Link from 'next/link'
 import { loginApi } from '@/utils/authApi'
+import { redirect } from 'next/navigation'
 
 const login = () => {
     const [loading,setLoading]=useState(false)
@@ -18,6 +19,7 @@ const login = () => {
        console.log(data);
        
        setLoading(false)
+       redirect('/')
        
     }
   return (

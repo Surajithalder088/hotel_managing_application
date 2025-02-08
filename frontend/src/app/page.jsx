@@ -16,6 +16,7 @@ const links=[
 ]
 
 import axios from "axios"
+import Loading from "./{component}/Loading/page";
 
 const api="http://localhost:7070"
 
@@ -27,12 +28,13 @@ export default function Home() {
   const [services,setServices]=useState([])
 
   const filterData=searchTerm.trim()===""?services :
-  services.filter((item)=>item.hotelName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+  services.filter((item)=>item.hotel.email.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
 
   const fetchingServiceList=async()=>{
     try{
       const list= await axios.get(api+'/api/service/service-all')
+      //list.sort((a,b)=>a.buyer.length - b.buyer.length)
       console.log(list.data.allServices);
       setServices(list.data.allServices)
     
@@ -58,14 +60,7 @@ export default function Home() {
    <div className='navbarContainer'> 
     <div className="logo">
       <h1 >SITO</h1>
-      <button
-      onClick={()=>{
-        fetchingServiceList()
-      console.log(services);
-      
-        
-      }}
-      >fetch</button>
+    
     </div>
     <div className="searchContainer">
       <img src="search-line.png"/>
@@ -88,6 +83,15 @@ export default function Home() {
    
     </div>
     <div className="nav">demonav</div>
+
+    {
+      services.length===0?
+      (
+        <Loading/>
+      ):
+      (
+
+     
     <div className="sList"
     style={{
       width: "100vw"
@@ -100,6 +104,8 @@ export default function Home() {
       }
       
     </div>
+     )
+    }
    </div>
   );
 }

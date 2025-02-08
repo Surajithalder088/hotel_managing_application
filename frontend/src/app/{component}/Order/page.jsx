@@ -23,7 +23,7 @@ const Order = ({item}) => {
                 <div className="pending"></div>
                }
                <p><div className="variable">Service Taken :</div>{item.details}</p>
-               <p><div className="variable">Order Date :</div>{item.craeteAt}</p>
+               <p><div className="variable">Order Date :</div>{item.createdAt}</p>
                </div>
                   
              </div>

@@ -5,16 +5,14 @@ import { redirect, useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { services } from "@/assets/service";
 import { reviews } from "@/assets/review";
-import Navbar from '@/app/{component}/Navbar/page';
+
 import { motion, useInView } from 'motion/react'
 import axios from "axios";
+import {receiptCreate} from "@/utils/api"
+import Loading from "@/app/{component}/Loading/page";
+import Navbar from "@/app/{component}/Navbar/page";
 
-const links=[
-    {id:1,name:"hotel abc",price:450},
-    {id:2,name:"hotel tyf",price:450},
-    {id:3,name:"hotel kls",price:450},
-    {id:4,name:"hotel wrd",price:450}
-  ]
+
 
   const serviceVariant={
     initial:{
@@ -48,7 +46,9 @@ const links=[
   const api="http://localhost:7070"
 
 const Service = () => {
+   const [reviews,setReviews]=useState([])
  const [service,setService]=useState({})
+ const [loading,setLoading]=useState(false)
     const {id} =useParams()
    // const service=services.find(l=>l.id===2)
     
@@ -59,18 +59,39 @@ const Service = () => {
          let obj=data.data.service
          
           setService(obj)
-         console.log(obj);
+        
          
       }catch(error){
         console.log(error);
         
       }
     }
+    const fetchReviewsList=async()=>{
+      try{
+       const reviews= await axios.get(api+`/api/review/reviewbyserviceid/${id}`,{withCredentials:true})
+       
+        setReviews(reviews.data.reviews)
+       
+      }catch(error){
+        console.log(error);
+        
+      }
+    }
+
+    const orderHandler=async(e)=>{
+      e.preventDefault()
+     const receipt=await receiptCreate(service._id)
+     console.log(receipt);
+     const receiptLink=receipt.data.receipt._id ;
+     redirect(`/receipt/${receiptLink}`)
+     
+    }
 
     useEffect(() => {
      
       fetchServiceDetails()
-    console.log(service);
+    
+    fetchReviewsList()
     
      
     }, [service])
@@ -83,9 +104,9 @@ const Service = () => {
    <div className="nav">navbar</div>
 
     {
-        !service._id?(<div className="loading">
-            loading
-        </div>)
+        !service._id?(
+          <Loading/>
+        )
         :
    ( <div className="service">
      
@@ -93,12 +114,8 @@ const Service = () => {
      
     <div className="orderBtn">
         <button
-        onClick={()=>{
-          redirect(`/receipt/${id}`)
-        
-         
-        }}
-        className="btn">Order Now</button>
+        onClick={orderHandler}
+        className="btn">{loading ?"Loading":"Order now"}</button>
        </div>
       <div className="card">
         <motion.div 
@@ -130,7 +147,7 @@ const Service = () => {
         <div className="reviewList">
         {
           reviews.map(r=>(
-            <div className="review" key={r.id}>
+            <div className="review" key={r._id}>
               <p>customer id :{r.user}</p>
               <p>star : {r.ratings}</p>
               <p>{r.text}</p>

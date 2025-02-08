@@ -29,8 +29,8 @@ const   isInView=useInView(ref,{margin:"-200px"})
     variants={divVariant}
     animate={"animate"}
     initial='initial'
-    key={l.id} className="serviceContainer" ref={ref}>
-      <Link href={`/hotel/${l._id}`}>
+    key={l._id} className="serviceContainer" ref={ref}>
+      <Link href={`/hotel/${l.hotel._id}`}>
         <div className='hotelName'>{l.hotel.email}</div>
         </Link>
             <div className="desc1">
