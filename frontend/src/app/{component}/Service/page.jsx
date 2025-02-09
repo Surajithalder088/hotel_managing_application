@@ -34,6 +34,7 @@ const   isInView=useInView(ref,{margin:"-200px"})
         <div className='hotelName'>{l.hotel.email}</div>
         </Link>
             <div className="desc1">
+            <div className=''> {l.name}</div>
             <div className='type'>Service Type is : {l.type}</div>
           <div className='details'>
             <p className="para">Description of the service : </p>{l.details}

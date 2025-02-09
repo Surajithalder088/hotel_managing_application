@@ -3,7 +3,8 @@ import React, { useRef } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
 import { redirect } from 'next/dist/server/api-utils'
-
+import axios from 'axios'
+const api='http://localhost:7070'
 
 
 const divVariant={
@@ -25,6 +26,25 @@ const Service = ({l}) => {
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})
+
+const deleteHandler =async(e)=>{
+  e.preventDefault()
+  try{
+
+ 
+   const res= await axios.delete(api+`/api/service/service-delete/${l._id}`,{withCredentials:true})
+   console.log(res.data);
+   window.location.reload()
+   alert("Deleted the Service")
+   
+   
+     }catch(error){
+      console.log(error);
+      alert("failed to delete")
+      
+     }
+}
+
   return (
     <motion.div 
     variants={divVariant}
@@ -32,19 +52,21 @@ const   isInView=useInView(ref,{margin:"-200px"})
     initial='initial'
     key={l._id} className="serviceContainer" ref={ref}>
      <div className="access">
+      <Link href={`/edit-service/${l._id}`}>
         <button className="iconedit"
-        onClick={()=>{
-          alert("edit")
-          redirect(`/edit-service/${l._id}`)
-        }}
+        
         >
             <img src='/file-edit-line.png'/>
         </button>
-        <button className="iconedit">
+        </Link>
+        <button className="iconedit" 
+        onClick={deleteHandler}
+        >
         <img src='/delete-bin-6-line.png'/>
         </button>
      </div>
             <div className="desc1">
+            <div className=''> {l.name}</div>
             <div className='type'>Service Type is : {l.type}</div>
           <div className='details'>
             <p className="para">Description of the service : </p>{l.details}

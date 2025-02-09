@@ -28,7 +28,7 @@ export default function Home() {
   const [services,setServices]=useState([])
 
   const filterData=searchTerm.trim()===""?services :
-  services.filter((item)=>item.hotel.email.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+  services.filter((item)=>item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
 
   const fetchingServiceList=async()=>{

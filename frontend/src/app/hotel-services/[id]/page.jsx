@@ -36,8 +36,26 @@ const Hotel= () => {
     const [name,setName]=useState("")
     const [price,setPrice]=useState("")
     const [details,setDetails]=useState("")
+    const [loading,setLoading]=useState(false)
   
+const handleSubmit=async(e)=>{
+  e.preventDefault()
 
+  try{
+    setLoading(true)
+    const res=await axios.post(api+`/api/service/service-create/${hotel._id}`,{type,name,price,details},{withCredentials:true})
+    console.log(res.data);
+    window.location.reload()
+    
+  }catch(error){
+    console.log(error);
+    setLoading(false)
+    alert("Failed due to network")
+    window.location.reload()
+  }
+
+  
+}
     
   return (
    <>
@@ -65,7 +83,7 @@ const Hotel= () => {
       }
       <div className="newform">
        
-        <form>
+        <form onSubmit={handleSubmit}>
            <h5>Add new service to your hotel:</h5>
            <select value={type} onChange={(e)=>{setType(e.target.value)}}>
             <option value='room'>room</option>
@@ -93,7 +111,9 @@ const Hotel= () => {
             setDetails(e.target.value)
           }}
           ></textarea>
-          <button className="add">Add new service</button>
+          <button className="add">{
+              loading?"Creating":"Add New Service"
+    }</button>
         </form>
       </div>
     </div>

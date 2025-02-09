@@ -68,7 +68,13 @@
     font-size: 12px;
     width: 90%;
 }
-
+.add{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    background: #000;
+    color: #b4b0b0;
+}
 
 .allservices{
     display: flex;
