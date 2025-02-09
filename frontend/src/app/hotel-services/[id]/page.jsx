@@ -8,6 +8,7 @@ import { services } from "@/assets/service"
 import Service from "@/app/{component}/HotelService/page"
 import Navbar from "@/app/{component}/Navbar/page"
 import axios from 'axios'
+import Link from "next/link"
 
 
 
@@ -115,6 +116,13 @@ const handleSubmit=async(e)=>{
               loading?"Creating":"Add New Service"
     }</button>
         </form>
+      </div>
+
+      <div className="ordersBtn">
+        <h5>View list of new and previous orders :</h5>
+        <Link href={`/hotel-orders/${id}`}>
+        <button>View  Orders of this hotel</button>
+        </Link>
       </div>
     </div>
 
