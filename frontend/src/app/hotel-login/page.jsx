@@ -72,7 +72,7 @@ const hotelLogin = () => {
              >View dashboard</button>
               )
              }
-             <p className='p'>New Customer?Register first :<Link href={'/register'}>Register</Link></p>
+             <p className='p'>New Customer?Register first :<Link href={'/hotel-register'}>Register</Link></p>
          </div>
         </div>
         </>

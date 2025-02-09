@@ -5,6 +5,7 @@ import "./style.css"
 import Link from 'next/link'
 import axios from "axios"
 import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 
 const api='http://localhost:7070'
@@ -13,17 +14,19 @@ const hotelRegister = () => {
     const[email,setEmail]=useState("")
     const[name,setName]=useState("")
     const[password,setPassword]=useState("")
+    const router=useRouter()
 
     const apiregister=async(e)=>{
         e.preventDefault()
-        try{
+ try{
      const res= await axios.post(api+`/api/hotel/register`,{name,email,password})
      console.log(res.data);
-     redirect('/')
+     alert("registered successfully")
+     router.push(`/hotel-services/${res.data.newUser._id}`)
      
         }catch(error){
             console.log(error);
-            
+            alert("Failed to register")
         }
           
     }
@@ -53,7 +56,7 @@ const hotelRegister = () => {
                  <button  type='submit'>Register</button>
             </form>
         </div>
-        <p className='p'>Already have account :<Link href={'/login'}>Login</Link></p>
+        <p className='p'>Already have account :<Link href={'/hotel-login'}>Login</Link></p>
     </div>
    </div>
    </>
