@@ -45,7 +45,7 @@ import { format } from "date-fns";
     }
   }
 
-  const api="http://localhost:7070"
+  const api=process.env.NEXT_PUBLIC_API_URL
 
 const Service = () => {
    const [reviews,setReviews]=useState([])

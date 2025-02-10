@@ -4,7 +4,7 @@ import "./style.css"
 import { motion, useInView } from 'motion/react'
 import { redirect } from 'next/dist/server/api-utils'
 import axios from 'axios'
-const api='http://localhost:7070'
+const api=process.env.NEXT_PUBLIC_API_URL
 
 
 const divVariant={

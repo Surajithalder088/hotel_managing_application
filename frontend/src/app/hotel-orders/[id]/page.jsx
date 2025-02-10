@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-const api='http://localhost:7070'
+const api=process.env.NEXT_PUBLIC_API_URL
 
 const hotelOrders = () => {
     const [orders,setOrders]=useState([])

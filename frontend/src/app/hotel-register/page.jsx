@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
 
-const api='http://localhost:7070'
+const api=process.env.NEXT_PUBLIC_API_URL
 
 const hotelRegister = () => {
     const[email,setEmail]=useState("")

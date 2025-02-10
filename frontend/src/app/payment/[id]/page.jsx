@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import React from 'react'
 import axios from "axios"
 
-const api="http://localhost:7070"
+const api=process.env.NEXT_PUBLIC_API_URL
 
 const Payment = () => {
   const {id}=useParams()

@@ -1,5 +1,6 @@
 "use client"
 
+
 import Image from "next/image";
 import Link from "next/link";
 import "./app.css"
@@ -18,7 +19,7 @@ const links=[
 import axios from "axios"
 import Loading from "./{component}/Loading/page";
 
-const api="http://localhost:7070"
+const api=process.env.NEXT_PUBLIC_API_URL
 
 
 
@@ -45,12 +46,15 @@ export default function Home() {
     
     
   }
+  const value=process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
    
  fetchingServiceList()
  
   console.log(services);
+  console.log(value);
+  
   
     
   }, [])

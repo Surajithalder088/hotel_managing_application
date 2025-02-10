@@ -12,7 +12,7 @@ import Link from "next/link"
 
 
 
-const api="http://localhost:7070"
+const api=process.env.NEXT_PUBLIC_API_URL
 
 
 const Hotel= () => {
