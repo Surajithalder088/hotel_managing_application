@@ -31,7 +31,7 @@ const   isInView=useInView(ref,{margin:"-200px"})
     initial='initial'
     key={l._id} className="serviceContainer" ref={ref}>
       <Link href={`/hotel/${l.hotel._id}`}>
-        <div className='hotelName'>{l.hotel.email}</div>
+        <div className='hotelName'>{l.hotel.name}</div>
         </Link>
             <div className="desc1">
             <div className=''> {l.name}</div>

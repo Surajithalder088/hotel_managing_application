@@ -1,0 +1,49 @@
+.page{
+    padding: 10px;
+    background: #000;
+}
+.head{
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+
+.receiptContainer{
+    background: #000;
+    width: 100vw;
+    height: 100%;
+    padding: 10px;
+
+}
+.receipt{
+    display: flex;
+    gap: 300px;
+    width: 90%;
+    background-color: rgb(184, 181, 178);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+}
+.left p{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.paym{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.paid{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(3, 204, 127);
+    border: 1px solid black;
+}
+.pending{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(214, 5, 68);
+    border: 1px solid black;
+}

@@ -5,6 +5,7 @@ import "./style.css"
 import Link from 'next/link'
 import axios from "axios"
 import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 
 const api=process.env.NEXT_PUBLIC_API_URL
@@ -13,13 +14,14 @@ const Register = () => {
     const[email,setEmail]=useState("")
     const[name,setName]=useState("")
     const[password,setPassword]=useState("")
+    const route=useRouter()
 
     const apiregister=async(e)=>{
         e.preventDefault()
         try{
      const res= await axios.post(api+`/api/customer/register`,{name,email,password})
      console.log(res.data);
-     redirect('/')
+     route.push('/login')
      
         }catch(error){
             console.log(error);

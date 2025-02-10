@@ -26,6 +26,9 @@
     padding: 5px;
     border-radius: 20px;
     text-decoration: none;
+    color: #fff;
+    display: flex;
+    justify-content: center;
 }
 .desc1{
    
