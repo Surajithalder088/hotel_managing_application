@@ -13,6 +13,7 @@ import Loading from "@/app/{component}/Loading/page";
 import Navbar from "@/app/{component}/Navbar/page";
 import { CircularProgress } from "@mui/material";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 
 
@@ -54,6 +55,7 @@ const Service = () => {
     const {id} =useParams()
    // const service=services.find(l=>l.id===2)
     
+   const route=useRouter()
 
     const fetchServiceDetails=async()=>{
       try{
@@ -123,11 +125,16 @@ const Service = () => {
      
     <div className="orderBtn">
         <button
-        onClick={orderHandler}
+        onClick={
+          ()=>{
+            setLoading(true)
+            route.push(`/hotel/${service.hotel._id}`)
+          }
+        }
         className="btn">{loading ?
         (
           <CircularProgress />
-        ):"Order now"}</button>
+        ):"Order"}</button>
        </div>
       <div className="card">
         <motion.div 

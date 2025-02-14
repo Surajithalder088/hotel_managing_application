@@ -18,7 +18,8 @@ const links=[
 
 import axios from "axios"
 import Loading from "./{component}/Loading/page";
-import Hotel from "./{component}/Hotel/page";
+import HotelRoom from "./{component}/Hotel-room/page";
+import HotelReastaurant from "./{component}/Hotel-Restaurant/page";
 
 const api=process.env.NEXT_PUBLIC_API_URL
 
@@ -33,17 +34,23 @@ export default function Home() {
   const [hotelList,setHotelList]=useState([])
   const [roomLoc,setRoomLoc]=useState("")
   const [roomType,setRoomType]=useState("")
-  const [roomPrice,setRoomPrice]=useState("")
+  const [roomPrice,setRoomPrice]=useState(0)
+  const[filter,setfilter]=useState(false)
 
 
-  const filterData=searchTerm.trim()===""?services :
-  services.filter((item)=>item.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+  let filterData=filter===false?services :
+  services.filter((service)=>service.hotel.address===roomLoc && service.price<=roomPrice && service.itemType===roomType)
 
   const handleradio=(e)=>{
     setSearchTerm(e.target.value)
   }
-  const searchHandle=(e)=>{
-    e.preventDefault()
+  const searchHandle=()=>{
+   
+    if(!roomLoc || !roomPrice || !roomType){
+      alert('Fill all filters')
+    }
+
+  setfilter(true)
     console.log(`location ${roomLoc} item ${roomType} price ${roomPrice}`);
     
   }
@@ -139,7 +146,10 @@ export default function Home() {
     <div className="filterChoice">
       {
        ( searchTerm==="")?(
-        <div className="choice"> best hotels</div>
+        <div className="choice"> 
+        <h3>Find best hotels around you on our platform :</h3>
+        <h5>Find best food and room based on your desire search location and price,with facility like online pament and fidback.</h5>
+        </div>
        ):
       ( ( searchTerm==='room')?(
         <div className="roomChoice">
@@ -148,6 +158,7 @@ export default function Home() {
           <select
           className="selectinput"
           value={roomLoc} onChange={(e)=>{setRoomLoc(e.target.value)}}>
+          <option value=''>all</option>
             <option value='kolkata'>kolkata</option>
             <option value='delhi'>delhi</option>
             <option value='mumbai'>mumbai</option>
@@ -156,8 +167,9 @@ export default function Home() {
            </select>
           </div>
           <div className="selectType">
-            <p className="selectP">Select type:</p>
+            <p className="selectP">Select room type:</p>
           <select className="selectinput" value={roomType} onChange={(e)=>{setRoomType(e.target.value)}}>
+          <option value=''>all</option>
             <option value='1_bed_ac'>1_bed_ac</option>
             <option value='2_bed_ac'>2_bed_ac</option>
             <option value='1_bed_nonac'>1_bed_nonac</option>
@@ -168,11 +180,12 @@ export default function Home() {
           <div className="selectPrice">
             <p className="selectP">Select price:</p>
           <select className="selectinput" value={roomPrice} onChange={(e)=>{setRoomPrice(e.target.value)}}>
-            <option value='0-500'>0-500</option>
-            <option value='500-2000'>500-2000</option>
-            <option value='2000-5000'>2000-5000</option>
-            <option value='5000-10000'>5000-10,000</option>
-            <option value='10000-30000'>10,000-30,000</option>
+          <option value=''>0</option>
+            <option value='500'>0-500</option>
+            <option value='2000'>0-2000</option>
+            <option value='5000'>0-5000</option>
+            <option value='10000'>0-10,000</option>
+            <option value='30000'>0-30,000</option>
            </select>
           </div>
         <button className="searchbtn" onClick={searchHandle}>SEARCH</button>
@@ -185,6 +198,7 @@ export default function Home() {
         <select
         className="selectinput"
         value={roomLoc} onChange={(e)=>{setRoomLoc(e.target.value)}}>
+           <option value=''>all</option>
           <option value='kolkata'>kolkata</option>
           <option value='delhi'>delhi</option>
           <option value='mumbai'>mumbai</option>
@@ -193,8 +207,9 @@ export default function Home() {
          </select>
         </div>
         <div className="selectType">
-          <p className="selectP">Select type:</p>
+          <p className="selectP">Select food type:</p>
         <select className="selectinput" value={roomType} onChange={(e)=>{setRoomType(e.target.value)}}>
+        <option value=''>all</option>
           <option value='chienese'>chienese</option>
           <option value='chicken'>chicken</option>
           <option value='mutton'>mutton</option>
@@ -206,10 +221,11 @@ export default function Home() {
         <div className="selectPrice">
           <p className="selectP">Select price:</p>
         <select className="selectinput" value={roomPrice} onChange={(e)=>{setRoomPrice(e.target.value)}}>
-          <option value='0-50'>0-50</option>
-          <option value='50-100'>50-100</option>
-          <option value='100-500'>100-500</option>
-          <option value='500-1000'>500-1,000</option>
+        <option value=''>0</option>
+          <option value='50'>0-50</option>
+          <option value='100'>0-100</option>
+          <option value='500'>0-500</option>
+          <option value='1000'>0-1,000</option>
           
          </select>
         </div>
@@ -236,8 +252,15 @@ export default function Home() {
     }}
     >
       {
-        hotelList.map(hotel=>(
-       <Hotel hotel={hotel} key={hotel._id} />
+        filterData.length===0?<>
+        <div className="nodata">
+          <h2>No data has been fetched based on your filter</h2>
+        </div>
+        </>:
+        filterData.map(hotel=>(
+         
+          <HotelReastaurant l={hotel} key={hotel._id}/>
+       
         ))
       }
       

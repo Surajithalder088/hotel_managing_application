@@ -18,6 +18,9 @@ const hotelSchema= new mongoose.Schema({
   address:{
     type:String,
   },
+  image:{
+    type:String
+  },
   services:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'service'

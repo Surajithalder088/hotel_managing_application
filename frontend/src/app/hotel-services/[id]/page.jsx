@@ -37,6 +37,7 @@ const Hotel= () => {
     const [name,setName]=useState("")
     const [price,setPrice]=useState("")
     const [details,setDetails]=useState("")
+    const [itemType,setItemType]=useState("")
     const [loading,setLoading]=useState(false)
   
 const handleSubmit=async(e)=>{
@@ -44,7 +45,7 @@ const handleSubmit=async(e)=>{
 
   try{
     setLoading(true)
-    const res=await axios.post(api+`/api/service/service-create/${hotel._id}`,{type,name,price,details},{withCredentials:true})
+    const res=await axios.post(api+`/api/service/service-create/${hotel._id}`,{type,name,price,details,itemType},{withCredentials:true})
     console.log(res.data);
     window.location.reload()
     
@@ -72,26 +73,59 @@ const handleSubmit=async(e)=>{
           </div>
         ):(
 
-        
+        <>
         <div className="aboutehotel">
+          <div>
             <p className="hotelname">Email of this hotel is : {hotel.email}</p>
           
             <p className="aboute">Totel Service Provided : {hotel.services.length}</p>
             <p  className="aboute">This hotel is Registered at : {hotel.createdAt}</p>
+      </div> <div className="edit">
+        <Link href={`/hotel-edit/${id}`}>
+        edit
+</Link>
 
+      </div>
         </div>
+       </>
         )
       }
       <div className="newform">
        
         <form onSubmit={handleSubmit}>
            <h5>Add new service to your hotel:</h5>
+           <div className="select">
            <select value={type} onChange={(e)=>{setType(e.target.value)}}>
             <option value='room'>room</option>
             <option value='restaurant'>restaurant</option>
            
            </select>
-          
+           {
+            type==="room"?(
+            <select className="selectinput" value={itemType} onChange={(e)=>{setItemType(e.target.value)}}>
+           <option value=''>select room</option>
+            <option value='1_bed_ac'>1_bed_ac</option>
+            <option value='2_bed_ac'>2_bed_ac</option>
+            <option value='1_bed_nonac'>1_bed_nonac</option>
+            <option value='2_bed_nonac'>2_bed_nonac</option>
+           
+           </select>
+
+            ):(
+              <select className="selectinput" value={itemType} onChange={(e)=>{setItemType(e.target.value)}}>
+        <option value=''>select food</option>
+          <option value='chienese'>chienese</option>
+          <option value='chicken'>chicken</option>
+          <option value='mutton'>mutton</option>
+          <option value='veg'>veg</option>
+          <option value='nonveg'>non veg</option>
+         
+         </select>
+
+            )
+           }
+           
+          </div>
           <input type="text"
           value={name}
           placeholder="Give service name"

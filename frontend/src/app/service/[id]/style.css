@@ -12,13 +12,16 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-   background: #fff;
+   
    padding: 20px;
+   background-color: #85FFBD;
+background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+
 }
 .card{
     width: 100%;
     height: 100%;
-    background-color: #fff;
+   
     color: white;
     display: flex;
     padding: 1.8rem;

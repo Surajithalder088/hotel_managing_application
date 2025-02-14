@@ -14,6 +14,7 @@
 }
 .aboutehotel{
     background-color: #2f115e;
+    display: flex;
     margin: 20px;
     height: 70%;
     padding: 20px;
@@ -80,7 +81,9 @@
     background-color: #fff;
     cursor: pointer;
 }
-
+.select{
+    display: flex;
+}
 .ordersBtn{
     width: fit-content;
     height: 80%;

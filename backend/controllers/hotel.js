@@ -133,3 +133,23 @@ export const hotelAll=async(req,res)=>{
         res.status(500).json({message:"Internal server error",error})
     }
 }
+
+export const edit=async(req,res)=>{
+    const {id}=req.params 
+    try{
+        const {image,address}=req.body
+        const hotel= await hotelModel.findByIdAndUpdate({_id:id},{image,address})
+    if(!hotel){
+        return res.status(400).json({message:"hotel not find"})
+     }
+    
+     hotel.image=image;
+     hotel.address=address;
+     await hotel.save()
+     res.status(200).json({message:"hotel updated",hotel})
+
+    }catch(error){
+        res.status(500).json({message:"Intenal server error",error})
+    }
+
+}

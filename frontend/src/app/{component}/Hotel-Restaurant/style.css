@@ -19,10 +19,13 @@
     margin-right: 14px;
     border-radius: 20px;
 }
-.add{
-    font-size: 15px;
+.hotelname{
+  
     font-family: monospace;
     background: #000;
+    color: #fff;
+    font-size: 25px;
+    list-style: none;
     padding: 5px;
     border-radius: 20px;
     text-decoration: none;
@@ -30,29 +33,7 @@
     display: flex;
     justify-content:space-around;
 }
-.add button{
- background-color: #fff;
- width: 70px;
- height: 30px;
- border-radius: 20px;
- color: #000;
- font-size: 15px;
- font-style: italic;
-}
-.add button:hover{
-    cursor: pointer;
-}
-.items{
-    display: flex;
-    align-items: center;
-}
-.items button{
-    height: 20px;
-}
-.items p{
-    color: #fff;
-    font-weight: 600;
-}
+
 .desc1{
    
     padding: 10px;

@@ -1,14 +1,16 @@
 .navbarContainer{
     width: 100vw;
-    height: 5rem;
-    background: #000;
+    height: 2.5rem;
+    background: #888787;
     color: #fff;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
 
 }
 .icon{
     background: #fff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
  }
  .icon:hover{
@@ -26,5 +28,5 @@
     gap: 300px;
 }
 .logo h1{
-    font-size: 30px;
+    font-size: 20px;
 }

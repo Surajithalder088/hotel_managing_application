@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
 
@@ -20,38 +20,25 @@ const divVariant={
   }
 }
 
-
-const Service = ({l}) => {
+const HotelRoom = ({l}) => {
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})
-
-const [add,setAdd]=useState(false)
-const [number,setNumber]=useState(1)
   return (
     <motion.div 
     variants={divVariant}
     animate={"animate"}
     initial='initial'
     key={l._id} className="serviceContainer" ref={ref}>
-      
-        <div className='add'>
-          <button
-          onClick={()=>{
-            setAdd(!add)
-          }}
-          >
-            {
-              !add?"Add":"Remove"
-            }
-          </button>
-          
-
-        </div>
-       
+      <Link href={`/hotel/${l.hotel._id}`}>
+        <div className='hotelName'>{l.hotel.name}</div>
+        </Link>
             <div className="desc1">
-            <div className=''> {l.name}</div>
-            <div className='type'> {l.itemType}</div>
+            
+            <div>{l.hotel.address}</div>
+            <div>{l.type}</div>
+            <div className='type'> {l.name}</div>
+          
           <div className='details'>
             <p className="para">Description of the service : </p>{l.details}
             </div>
@@ -60,8 +47,8 @@ const [number,setNumber]=useState(1)
         <div className="desc2">
           <div className='price'>
             <img src='/rupee-indian.png' className='rupee'/>
-              {!add?l.price:l.price*number} </div>
-          <div className='buyer'>Number of Buyer : {l.buyer.length}</div>
+              {l.price} </div>
+              <div className='buyer'>Number of Orders : {l.buyer.length}</div>
           </div>
         <Link className='link' href={`/service/${l._id}`}>
         <button className='btn'>View Details</button>
@@ -70,4 +57,4 @@ const [number,setNumber]=useState(1)
   )
 }
 
-export default Service
+export default HotelRoom

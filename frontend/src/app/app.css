@@ -82,6 +82,24 @@
     padding: 10px;
     border: 1px solid black;
     position: fixed;
+    background: rgb(3,2,31);
+background: linear-gradient(90deg, rgba(3,2,31,1) 0%, rgba(143,30,213,0.9752275910364145) 67%, rgba(0,18,255,1) 100%);
+}
+.choice{
+    width: 98vw;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+   
+  
+}
+.choice h3{
+    color: aqua;
+    font-family: monospace;
+}
+.choice h5{
+    color: rgb(209, 214, 214);
+    font-weight: 300;
 }
 .roomChoice{
 display: flex;
@@ -111,6 +129,7 @@ align-items: center;
     font-family:monospace;
     font-weight: 700;
     font-size: 18px;
+    color: #858585;
 }
 .selectinput{
     height: 30px;
@@ -133,9 +152,18 @@ align-items: center;
     cursor: pointer;
     background: #000;
 }
+.nodata{
+    height: 75vh;
+    width: 98vw;
+    background: #949393;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .sList{
     margin-top: 4rem;
     display: flex;
    flex-wrap: wrap;
+   background-color: #ffffff;
    border: 1px solid black;
 }
