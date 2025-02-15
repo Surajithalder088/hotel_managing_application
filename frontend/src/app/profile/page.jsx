@@ -7,6 +7,9 @@ import Navbar from '../{component}/Navbar/page'
 import Link from 'next/link'
 import Order from '../{component}/Order/page'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import {logout} from "../../lib/features/authUser/authUserSlice"
+import { useRouter } from 'next/navigation'
 
 
 
@@ -15,15 +18,33 @@ const api=process.env.NEXT_PUBLIC_API_URL
 
 
 const Profile = () => {
+  const authUser=useSelector((state)=>state.authUser.type)
+    const route=useRouter()
+ 
+    useEffect(() => {
+     if(authUser!=='customer'){
+       route.push('/login')
+     }
+     
+    }, [])
  const [user,setUser]=useState(null)
  const [receiptList,setReceiptList]=useState([])
+  
 
+ const dispatch=useDispatch()
 
   const fetchUserProfile=async()=>{
     const data=  await axios.get(api+`/api/customer/profile`,{withCredentials:true})
     
     setUser(data.data.authUser)
     setReceiptList(data.data.receipts)
+    
+  }
+ 
+  const logOut=(e)=>{
+    e.preventDefault()
+      dispatch(logout())
+    console.log(authUser);
     
   }
   useEffect(() => {
@@ -42,7 +63,7 @@ const Profile = () => {
           <div className="user">
             <p> no user</p>
             <button className="btn"
-        onClick={fetchUserProfile}
+        onClick={logOut}
         >Logout</button>
           </div>
         ):
@@ -55,7 +76,7 @@ const Profile = () => {
         <p>total orders :{user.receipts.length}</p>
         <p>acb road, kol-768906</p>
         <button className="btn"
-        onClick={fetchUserProfile}
+        onClick={logOut}
         >Logout</button>
       </div>
       )
@@ -75,7 +96,7 @@ const Profile = () => {
             receiptList.map((item)=>
               ( <Link href={`/receipt/${item._id}`}>
 
-                <Order key={item.id} item={item}/>
+                <Order key={item._id} item={item}/>
              </Link>
      
         )

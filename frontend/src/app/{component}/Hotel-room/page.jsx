@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useRef } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
+import { format } from "date-fns";
 
 
 
@@ -24,35 +25,41 @@ const HotelRoom = ({l}) => {
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})
+const itemTypes=[...new Set(l.services.filter(service=>service.type==='room').map(service=>service.itemType))]
+
+const hotelDate= !l._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
+    format(new Date(l.createdAt ),'dd MMM yyyy,hh:mm a')
   return (
     <motion.div 
     variants={divVariant}
     animate={"animate"}
     initial='initial'
     key={l._id} className="serviceContainer" ref={ref}>
-      <Link href={`/hotel/${l.hotel._id}`}>
-        <div className='hotelName'>{l.hotel.name}</div>
+      <Link href={`/hotel/${l._id}`}>
+        <div className='hotelname'>{l.name}</div>
         </Link>
             <div className="desc1">
             
-            <div>{l.hotel.address}</div>
-            <div>{l.type}</div>
-            <div className='type'> {l.name}</div>
+            <div>{l.address}</div>
+           <h4>Room varaity</h4>
+            <div className="items">
+            <ul>
+            {
+              itemTypes.map(item=>
+                <li>{item}</li>
+              )
+            }
+         </ul>
+         </div>
           
-          <div className='details'>
-            <p className="para">Description of the service : </p>{l.details}
-            </div>
+         
          
             </div>
         <div className="desc2">
-          <div className='price'>
-            <img src='/rupee-indian.png' className='rupee'/>
-              {l.price} </div>
-              <div className='buyer'>Number of Orders : {l.buyer.length}</div>
+          
+              <div className='buyer'>Number of Services : {l.services.length}</div>
           </div>
-        <Link className='link' href={`/service/${l._id}`}>
-        <button className='btn'>View Details</button>
-        </Link>
+          <div className="date">Hotel registered at :{hotelDate}</div>
           </motion.div>
   )
 }

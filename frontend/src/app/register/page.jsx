@@ -6,6 +6,7 @@ import Link from 'next/link'
 import axios from "axios"
 import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
+import {userAuth}from "../../lib/features/authUser/authUserSlice"
 
 
 const api=process.env.NEXT_PUBLIC_API_URL

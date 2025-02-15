@@ -8,6 +8,7 @@ import { services } from "@/assets/service";
 import Service from "./{component}/Service/page"
 import Navbar from "./{component}/Navbar/page";
 import { useEffect, useState } from "react";
+import { motion, useInView } from 'motion/react'
 //import { fetchingServiceList } from "@/utils/api";
 const links=[
   {id:1,name:"hotel abc",price:450},
@@ -20,9 +21,24 @@ import axios from "axios"
 import Loading from "./{component}/Loading/page";
 import HotelRoom from "./{component}/Hotel-room/page";
 import HotelReastaurant from "./{component}/Hotel-Restaurant/page";
+import { useSelector } from "react-redux";
 
 const api=process.env.NEXT_PUBLIC_API_URL
 
+const divVariant={
+  initial:{
+    y:100,
+    opacity:0
+},
+  animate:{
+    y:0,
+    opacity:1,
+    transition:{
+      duration:2.7,
+      straggerChildren:0.2
+    }
+  }
+}
 
 
 export default function Home() {
@@ -38,8 +54,12 @@ export default function Home() {
   const[filter,setfilter]=useState(false)
 
 
-  let filterData=filter===false?services :
-  services.filter((service)=>service.hotel.address===roomLoc && service.price<=roomPrice && service.itemType===roomType)
+  // filtering hotels based on their location ,service itemType and price
+  let filterData=filter===false?hotelList :
+  hotelList.filter((hotel)=>hotel.address===roomLoc 
+  && hotel.services.some(service=>service.itemType===roomType &&service.price<=roomPrice)
+
+)
 
   const handleradio=(e)=>{
     setSearchTerm(e.target.value)
@@ -73,7 +93,7 @@ export default function Home() {
   const fetchAllHotels=async()=>{
     try{
       const list =await axios.get(api+`/api/hotel/hotel-all`,{withCredentials:true})
-      console.log(list.data);
+      console.log(list.data.hotels);
       setHotelList(list.data.hotels)
       
     }catch(error){
@@ -83,16 +103,15 @@ export default function Home() {
     
   }
 
-  const value=process.env.NEXT_PUBLIC_API_URL
+const authUser=useSelector((state)=>state.authUser.type)
 
   useEffect(() => {
    
  fetchingServiceList()
  fetchAllHotels()
+ console.log(authUser);
  
-  
-  
-  
+ 
     
   }, [])
   
@@ -246,7 +265,11 @@ export default function Home() {
       (
 
      
-    <div className="sList"
+    <motion.div 
+       variants={divVariant}
+       animate={"animate"}
+       initial='initial'
+    className="sList"
     style={{
       width: "100vw"
     }}
@@ -258,13 +281,13 @@ export default function Home() {
         </div>
         </>:
         filterData.map(hotel=>(
-         
-          <HotelReastaurant l={hotel} key={hotel._id}/>
+         searchTerm==='room'?(<HotelRoom l={hotel} key={hotel._id}/>):
+         ( <HotelReastaurant l={hotel} key={hotel._id}/>)
        
         ))
       }
       
-    </div>
+    </motion.div>
      )
     }
    </div>

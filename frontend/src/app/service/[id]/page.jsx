@@ -85,7 +85,7 @@ const Service = () => {
     const orderHandler=async(e)=>{
       e.preventDefault()
       setLoading(true)
-     const receipt=await receiptCreate(service._id)
+     const receipt=await receiptCreate(service._id) //give hotel id and other data of orders
      console.log(receipt);
      const receiptLink=receipt.data.receipt._id ;
      
@@ -136,7 +136,7 @@ const Service = () => {
           <CircularProgress />
         ):"Order"}</button>
        </div>
-      <div className="card">
+      <div className="Card">
         <motion.div 
         variants={serviceVariant}
         initial='initial'

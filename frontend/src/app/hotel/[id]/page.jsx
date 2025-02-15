@@ -8,6 +8,8 @@ import { services } from "@/assets/service"
 import Service from "@/app/{component}/Service/page"
 import Navbar from "@/app/{component}/Navbar/page"
 import axios from 'axios'
+import { useSelector } from "react-redux"
+import { useRouter } from "next/navigation"
 
 
 
@@ -15,6 +17,16 @@ const api=process.env.NEXT_PUBLIC_API_URL
 
 
 const Hotel= () => {
+
+   const authUser=useSelector((state)=>state.authUser.type)
+   const route=useRouter()
+
+   useEffect(() => {
+    if(authUser!=='customer'){
+      route.push('/login')
+    }
+    
+   }, [])
     const {id}=useParams()
    // const hotel=services.find(l=>l.id===1)
    const [hotel,setHotel]=useState(null)
@@ -23,6 +35,8 @@ const Hotel= () => {
    const [price,setPrice]=useState(0)
    const [type,setType]=useState('')
    const [searching,setSearching]=useState(false)
+  
+   
 
     const hotelByid=async()=>{
      const data= await axios.get(api+`/api/hotel/hotelbyid/${id}`,{withCredentials:true})

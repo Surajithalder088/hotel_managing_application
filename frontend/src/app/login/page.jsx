@@ -5,21 +5,34 @@ import "./style.css"
 import Link from 'next/link'
 import { loginApi } from '@/utils/authApi'
 import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import {userAuth}from "../../lib/features/authUser/authUserSlice"
 
 const login = () => {
     const [loading,setLoading]=useState(false)
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
+    const route=useRouter()
+
+    const dispatch=useDispatch()
 
     const loginHandler=async(e)=>{
         e.preventDefault()
+        try{
+
+       
         setLoading(true)
        const data=await loginApi({email,password})
       
-       console.log(data);
+       console.log(data.existingUser);
        
-      
-       redirect('/')
+      dispatch(userAuth(data.existingUser.email))
+       route.push('/')
+     }catch(error){
+        console.log(error);
+        
+     }
        
     }
   return (

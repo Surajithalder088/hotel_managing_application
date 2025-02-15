@@ -60,6 +60,23 @@
     padding: 8px;
     cursor: grab;
 }
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+   background-color: #424242;
+   border-radius: 10px;
+   
+}
+.items ul{
+    display: flex;
+    flex-wrap: wrap;
+    color: #f8f7f7;
+    font-size: 22px;
+    font-weight: 200; 
+    gap: 10px;
+    list-style: none;
+}
 .details{
 
     flex:3
@@ -75,23 +92,7 @@
 .rupee{
     width: 15px;
 }
-.link{
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    margin: 20px;
-}
-.btn{
-    width: 400px;
-    background-color: brown;
-    height: 40px;
-    border-radius: 10px;
-    outline: none;
-    font-size: 20px;
-    color: #fff;
-}
-.btn:hover{
-    background-color: rgb(112, 132, 248);
-    color: #000;
-    cursor: pointer;
+
+.date{
+    padding: 20px;
 }

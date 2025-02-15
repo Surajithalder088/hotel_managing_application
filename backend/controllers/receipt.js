@@ -1,6 +1,7 @@
 import serviceModel from "../models/service.js";
 import customerModel from "../models/customer.js";
 import receiptModel from "../models/receipt.js";
+import hotelModel from '../models/hotel.js'
 import receipt from "../models/receipt.js";
 
 export const receiptCreate=async(req,res)=>{
@@ -12,30 +13,33 @@ export const receiptCreate=async(req,res)=>{
        if(!user){
         return  res.status(404).json({message:"user not found"})
        }
-       const {serviceId}=req.params
+       const {hotelId}=req.params
+       const {type,price,services,details}=req.body // services and details are array data type
 
-       const service =await serviceModel.findOne({_id:serviceId}).populate('hotel')
-       if(!service){
-        return  res.status(404).json({message:"service not found"})
+       const hotel =await hotelModel.findOne({_id:hotelId})
+       if(!hotel){
+        return  res.status(404).json({message:"hotel not found"})
        }
        const receipt=await receiptModel.create({
-        type:service.type,
-        serviceId:service._id,
-        hotelName:service.hotel.email,
+        type:type,
+        serviceId:services,
+        hotelName:hotel._id,
         buyer:user._id,
-        price:service.price,
-        details:service.details
+        price:price,
+        details:details
     })
     if(!receipt){
         return  res.status(400).json({message:"failed to generate new receipt"})
     }
-    user.takenServices.push(service._id)
+   // user.takenServices.push(services)
     user.receipts.push(receipt._id)
     await user.save()
-    service.buyer.push(user._id);
-    await service.save()
+
+    /* this technique is wrong it should be  updated*/
+   
+         /* this technique is wrong it should be  updated*/
         
-            res.status(200).json({message:"receipt created",user,service,receipt})
+            res.status(200).json({message:"receipt created",user,receipt})
     }catch(error){
         res.status(500).json({message:"internal server error",error})
     }
@@ -66,9 +70,13 @@ export const receiptById=async(req,res)=>{
         if(!receipt){
             return  res.status(404).json({message:"receipt  by id not found"})
         }
-        const serviceid=receipt.serviceId;
-        const service=await serviceModel.findOne({_id:serviceid}).populate('hotel')
-            res.status(200).json({message:"receipt  by id found",receipt,service})
+        const hotelid=receipt.hotelName;
+        const hotel=await hotelModel.findOne({_id:hotelid})
+        const services=await serviceModel.find({_id:{$in:receipt.serviceId}})
+        if(!hotel || !services){
+            return  res.status(404).json({message:"failed to get hotel and services"})
+        }
+            res.status(200).json({message:"receipt  by id found",receipt,hotel,services})
     }catch(error){
         res.status(500).json({message:"internal server error",error})
     }

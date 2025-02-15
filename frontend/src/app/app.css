@@ -129,11 +129,11 @@ align-items: center;
     font-family:monospace;
     font-weight: 700;
     font-size: 18px;
-    color: #858585;
+    color: #fffefe;
 }
 .selectinput{
     height: 30px;
-    background-color: #b9b9b9;
+    background-color: #a3a2a2;
     border-radius: 10px;
     margin-left: 20px;
 }
