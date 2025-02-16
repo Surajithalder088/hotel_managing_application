@@ -18,6 +18,17 @@
    align-items: center;
    justify-content: space-around;
 }
+.filters button{
+    padding: 6px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: fantasy;
+}
+.filters button:hover{
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+}
 .aboutehotelContainer{
     margin: 2rem 0 2rem  0;
     background: #644588;
@@ -55,7 +66,7 @@
     margin:20px;
     max-height: 80%;
     padding: 20px;
-   max-width:  20%;
+   max-width:  25%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -69,10 +80,39 @@
 .cartlist{
     background-color: #000000;
     max-height: 400px;
-    overflow-y: scroll;
+    width: 300px;
+    overflow: scroll;
+    padding: 10px;
     flex: 3;
 }
-
+.cartItem{
+    display: flex;
+    gap: 20px;
+    background-color: #535252;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom:5px ;
+}
+.cartItem p{
+    font-size: 15px;
+}
+.cartBtn{
+    display: flex;
+    gap: 20px;
+   padding-top: 10px;
+}
+.cartBtn button{
+    background-color: #c79df7;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: fantasy;
+}
+.cartBtn button:hover{
+    background-color: #9046e6;
+    color: #fff;
+    cursor: pointer;
+}
 
 .allservices{
     display: flex;

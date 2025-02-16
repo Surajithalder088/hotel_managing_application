@@ -12,7 +12,7 @@ const Order = ({item}) => {
     <>
     <div className="receipt" >
         <div className="hotel">
-               <p>{item.hotelName}</p>
+               <p>{}</p>
                </div>
                <div className="data">
                <p> <div className="variable">service type : </div>{item.type}</p>

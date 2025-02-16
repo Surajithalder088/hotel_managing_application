@@ -53,6 +53,17 @@
     color: #fff;
     font-weight: 600;
 }
+.cartHandle{
+    display: flex;
+    align-items: center;
+}
+.cartHandle button{
+    width: 25px;
+
+}
+.number{
+    color: #fff;
+}
 .desc1{
    
     padding: 10px;

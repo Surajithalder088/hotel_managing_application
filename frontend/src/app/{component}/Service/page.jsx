@@ -1,7 +1,9 @@
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart, removeFromCart, updateQuantity } from '@/lib/features/orderCart/orderCartSlice'
 
 
 
@@ -23,11 +25,27 @@ const divVariant={
 
 const Service = ({l}) => {
 
+  const dispatch =useDispatch()
+
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})
 
 const [add,setAdd]=useState(false)
 const [number,setNumber]=useState(1)
+function qunatityHandler(){
+ 
+  dispatch(updateQuantity({id:l._id,quantity:number+1}))
+}
+
+const orderCart=useSelector((state)=>state.orderCart)
+
+useEffect(() => {
+  if(orderCart.items.length===0){
+    setAdd(false)
+    setNumber(1)
+  }
+}, [orderCart])
+
   return (
     <motion.div 
     variants={divVariant}
@@ -36,15 +54,51 @@ const [number,setNumber]=useState(1)
     key={l._id} className="serviceContainer" ref={ref}>
       
         <div className='add'>
-          <button
+            {
+              !add? (
+              <button
           onClick={()=>{
             setAdd(!add)
+            dispatch(addToCart({id:l._id,name:l.name,price:l.price}))
           }}
           >
-            {
-              !add?"Add":"Remove"
-            }
+          Add
           </button>
+
+              ):(<button
+                onClick={()=>{
+                  setAdd(!add)
+                  dispatch(removeFromCart({id:l._id}))
+                }}
+                >
+                Remove
+                </button>
+
+              )
+            }
+          
+          {
+            !add ?"":(
+              <div className='cartHandle' >
+                {
+                  number>=1?(
+                    <button className="quan" 
+                onClick={()=>{setNumber(number-1)
+                  dispatch(updateQuantity({id:l._id,quantity:number-1}))
+                } 
+                }>-</button>
+                  ):""
+                }
+                
+                <p className='number'>{number}</p>
+                <button className="quan" onClick={()=>{setNumber(number+1)
+                 qunatityHandler()
+                } 
+
+                }>+</button>
+              </div>
+            )
+          }
           
 
         </div>

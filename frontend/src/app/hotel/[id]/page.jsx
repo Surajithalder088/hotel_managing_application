@@ -8,8 +8,9 @@ import { services } from "@/assets/service"
 import Service from "@/app/{component}/Service/page"
 import Navbar from "@/app/{component}/Navbar/page"
 import axios from 'axios'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation"
+import { clearCart } from "@/lib/features/orderCart/orderCartSlice"
 
 
 
@@ -36,7 +37,7 @@ const Hotel= () => {
    const [type,setType]=useState('')
    const [searching,setSearching]=useState(false)
   
-   
+   const dispatch =useDispatch()
 
     const hotelByid=async()=>{
      const data= await axios.get(api+`/api/hotel/hotelbyid/${id}`,{withCredentials:true})
@@ -55,6 +56,8 @@ const Hotel= () => {
  e.preventDefault()
  setSearching(true)
     }
+
+    const orderCart=useSelector((state)=>state.orderCart)
     
   return (
    <>
@@ -158,14 +161,42 @@ const Hotel= () => {
         <div className="orderCart">
         
          <div className="cartlist">
-         <p>Lorem ipsum dolor sit amet consectetur
-           adipisicing elit. Quaerat ipsam consequuntur nostrum asperiores, ullam iusto alias, quae quisquam a
-            dignissimos impedit veritatis fuga. Ea dolore, adipisci nulla atque quibusdam repellendus dolores hic.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, impedit incidunt? In laudantium ipsa
-             iusto fuga provident molestiae velit voluptatibus!
-            </p>
+          {
+            orderCart.items.length===0?" No item":(
+               <ol>
+            <p>{"Name --> Price -->   Quantity"}</p>
+         {
+          orderCart.items.map(item=>
+           <li>
+            <div className="cartItem">
+              
+              <p>{item.name}</p>
+              <p>{item.price}</p>
+              <p>{item.quantity}</p>
+              
+            </div></li>
+            
+          )
+          
+
+         }</ol>
+            )
+          }
+          
+         <div>Total Items:{orderCart.totalQuantity}</div>
+         <div>Total Price :{orderCart.totalPrice}</div>
+          
+         
             </div>
-            <button>order</button>
+              <div className="cartBtn">
+            <button  onClick={()=>console.log(orderCart)
+            }>order</button>
+             <button  onClick={()=>{
+              dispatch(clearCart())
+             }
+            }>clear cart</button>
+            </div>
+
         </div>
     </div>
     {

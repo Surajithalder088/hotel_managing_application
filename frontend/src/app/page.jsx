@@ -107,7 +107,7 @@ const authUser=useSelector((state)=>state.authUser.type)
 
   useEffect(() => {
    
- fetchingServiceList()
+
  fetchAllHotels()
  console.log(authUser);
  
@@ -258,7 +258,7 @@ const authUser=useSelector((state)=>state.authUser.type)
     </div>
 
     {
-      services.length===0?
+      hotelList.length===0?
       (
         <Loading/>
       ):
