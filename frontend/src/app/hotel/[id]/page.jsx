@@ -1,6 +1,7 @@
 "use client"
 
 import "./style.css"
+import { CircularProgress, LinearProgress } from '@mui/material'
 import { useParams } from 'next/navigation'
 import React ,{useEffect, useState} from 'react'
 
@@ -8,18 +9,24 @@ import { services } from "@/assets/service"
 import Service from "@/app/{component}/Service/page"
 import Navbar from "@/app/{component}/Navbar/page"
 import axios from 'axios'
+
+
+
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation"
 import { clearCart } from "@/lib/features/orderCart/orderCartSlice"
+import { receiptCreate } from "@/utils/api"
+import Loading from "@/app/{component}/Loading/page"
 
 
 
 const api=process.env.NEXT_PUBLIC_API_URL
 
 
-const Hotel= () => {
+                    const Hotel= () => {
 
    const authUser=useSelector((state)=>state.authUser.type)
+   const userEmail=useSelector((state)=>state.authUser.email)
    const route=useRouter()
 
    useEffect(() => {
@@ -28,6 +35,8 @@ const Hotel= () => {
     }
     
    }, [])
+   
+   const orderCart=useSelector((state)=>state.orderCart)
     const {id}=useParams()
    // const hotel=services.find(l=>l.id===1)
    const [hotel,setHotel]=useState(null)
@@ -36,8 +45,39 @@ const Hotel= () => {
    const [price,setPrice]=useState(0)
    const [type,setType]=useState('')
    const [searching,setSearching]=useState(false)
+
+   const [ordering,setOrdering]=useState(false)
   
    const dispatch =useDispatch()
+  
+
+   const orderHandler=async(e)=>{
+e.preventDefault()
+
+    try{
+      setOrdering(true)
+       let price=orderCart.totalPrice
+    let services=orderCart.items.map(item=>item.id)
+    let details=orderCart.items.map(item=>(`name:${item.name},quantity:${item.quantity},price:${item.price}`))
+      console.log({userEmail,type,price,services,details});
+
+    const receipt= await axios.post(api+`/api/receipt/receipt-create/${id}`,{userEmail,type,price,services,details},{withCredentials: true})
+     // const res= await receiptCreate({id:id,type:"food",price,services,details})
+    
+      
+     console.log(receipt.data);
+     dispatch(clearCart())
+     route.push(`/receipt/${receipt.data.receipt._id}`)
+
+    }catch(error){
+      console.log(error);
+      setOrdering(false)
+      alert("Failed to generate new receipt")
+      
+    }
+   
+     
+   }
 
     const hotelByid=async()=>{
      const data= await axios.get(api+`/api/hotel/hotelbyid/${id}`,{withCredentials:true})
@@ -57,7 +97,7 @@ const Hotel= () => {
  setSearching(true)
     }
 
-    const orderCart=useSelector((state)=>state.orderCart)
+   
     
   return (
    <>
@@ -129,6 +169,7 @@ const Hotel= () => {
            </select>
           </div>
           <button
+          className="searchBtn"
           onClick={handleSearch}
           >search</button>
     </div>
@@ -189,8 +230,9 @@ const Hotel= () => {
          
             </div>
               <div className="cartBtn">
-            <button  onClick={()=>console.log(orderCart)
-            }>order</button>
+            <button  onClick={orderHandler}>{
+              ordering?(<CircularProgress className="circle"/>):"order"
+              }</button>
              <button  onClick={()=>{
               dispatch(clearCart())
              }

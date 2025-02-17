@@ -102,16 +102,25 @@
    padding-top: 10px;
 }
 .cartBtn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
     background-color: #c79df7;
     padding: 10px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 25px;
     font-family: fantasy;
+    object-fit: contain;
 }
 .cartBtn button:hover{
     background-color: #9046e6;
     color: #fff;
     cursor: pointer;
+}
+.circle{
+    color: #000000;
+    font-size: 20px;
 }
 
 .allservices{

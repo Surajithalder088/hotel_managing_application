@@ -82,7 +82,7 @@ const Receipt = () => {
 
     <div className="receiptBody">
       <div className="first">
-    <h2> Receipt Generated for Service : {receipt.serviceId}</h2>
+    <h2> Receipt Generated for Service : {receipt.serviceId.map(i=>i)}</h2>
 
       <p> <div className="variable">Receipt id :</div>{receipt._id}</p>
       <p><div className="variable">service.Type: </div>{receipt.type}</p>
