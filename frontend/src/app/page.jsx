@@ -120,7 +120,7 @@ const authUser=useSelector((state)=>state.authUser.type)
    <div className='navbarContainer'> 
    <div className="links" >
         <Link href={'/'}>
-       <img src="home-2-fill.png" className="icon" />
+       <img src="/home-2-fill.png" className="icon" />
         </Link>
         </div>
     
@@ -155,7 +155,7 @@ const authUser=useSelector((state)=>state.authUser.type)
      
         <div className="linksp" >
         <Link href={'/profile'}>
-        <img src="user-3-fill.png"  className="icon"  />
+        <img src="/user-3-fill.png"  className="icon"  />
         </Link>
       </div>
    
@@ -167,7 +167,7 @@ const authUser=useSelector((state)=>state.authUser.type)
        ( searchTerm==="")?(
         <div className="choice"> 
         <h3>Find best hotels around you on our platform :</h3>
-        <h5>Find best food and room based on your desire search location and price,with facility like online pament and fidback.</h5>
+        <h5>Find best food and room based on your desire search location and price,with facility like online pament and review & feedback.</h5>
         </div>
        ):
       ( ( searchTerm==='room')?(

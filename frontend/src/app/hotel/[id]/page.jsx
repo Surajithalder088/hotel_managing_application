@@ -11,7 +11,7 @@ import Navbar from "@/app/{component}/Navbar/page"
 import axios from 'axios'
 
 
-
+import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/navigation"
 import { clearCart } from "@/lib/features/orderCart/orderCartSlice"
@@ -58,10 +58,10 @@ e.preventDefault()
       setOrdering(true)
        let price=orderCart.totalPrice
     let services=orderCart.items.map(item=>item.id)
-    let details=orderCart.items.map(item=>(`name:${item.name},quantity:${item.quantity},price:${item.price}`))
+    let details=orderCart.items.map(item=>(` name:${item.name},quantity:${item.quantity},price:${item.price}  .`))
       console.log({userEmail,type,price,services,details});
 
-    const receipt= await axios.post(api+`/api/receipt/receipt-create/${id}`,{userEmail,type,price,services,details},{withCredentials: true})
+    const receipt= await axios.post(api+`/api/receipt/receipt-create/${id}`,{userEmail,type:"various",price,services,details},{withCredentials: true})
      // const res= await receiptCreate({id:id,type:"food",price,services,details})
     
       
@@ -191,13 +191,17 @@ e.preventDefault()
             <p className="">{hotel.email}</p>
             </div>
             <p className="aboute">Totel Service Provided : {hotel.services.length}</p>
-            <p  className="aboute">This hotel is Registered at : {hotel.createdAt}</p>
+            <p  className="aboute">This hotel is Registered at : {format(new Date(hotel.createdAt ),'dd MMM yyyy,hh:mm a')}</p>
+           
+           <div className="reveiw"><img src="/star-fill.png"/><p>{(hotel.starValue /hotel.starQunatity) ||0 }</p>
+            <p>({hotel.starQunatity})</p>
+            </div> 
 
         </div>
         )
       }
       <div className="image">
-        <img src="/hotelimg.png" className="hotelimg" />
+        <img src={hotel?.image.length>=6?hotel.image :"/hotelimg.png"}className="hotelimg" />
         </div>
         <div className="orderCart">
         

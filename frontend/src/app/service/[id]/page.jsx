@@ -144,7 +144,7 @@ const Service = () => {
         className="abouteService">
       <div className="id"> Service id :{id}</div> 
         <p><div className="value">Service provided : </div>{service.type}</p>
-       <p><div className="value">Total Buyer of this Service : </div>{service.buyer.length}</p>
+       <p><div className="value">{service.name}</div></p>
         <p><div className="value"> Price : </div>{service.price}</p>
         <p><div className="value"> Details of the Service : </div>{service.details}</p>
         <span> Service generated at : {serviceDate}</span>

@@ -35,7 +35,7 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     flex-direction: column;
     gap: 3px;
     justify-content: first baseline;
-    background-color: #76539485;
+   
     border-radius: 20px;
     color: #f8f5f5;
     padding: 10px;
@@ -57,6 +57,7 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     color: #929292;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
+    display: flex;
     
 }
 .abouteService span{
@@ -68,7 +69,7 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     display: flex;
     flex-direction: column;
     gap: 3px;
-    background-color: #f0ecec;
+   
     color: #000;
     border-radius: 20px;
     padding: 10px;

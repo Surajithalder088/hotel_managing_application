@@ -10,10 +10,16 @@ align-items: center;
 .first{
     width: 50%;
 }
+.id{
+    display: flex;
+    gap: 10px;
+    text-wrap: wrap;
+}
 .first p{
  color: rgb(57, 62, 66);
  font-size: 20px;
  font-weight: 900;
+ display: flex;
 
 }
 .second{

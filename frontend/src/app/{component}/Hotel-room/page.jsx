@@ -40,8 +40,13 @@ const hotelDate= !l._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
         </Link>
             <div className="desc1">
             
-            <div>{l.address}</div>
-           <h4>Room varaity</h4>
+            <div className='address'>--{l.address}</div>
+            <div className="imageConatainer">
+            <img src={l.image.length>=6?l.image :"/hotelimg.png"}
+            
+            className="hotelpic" />
+            </div>
+           <h4>Room varaity --</h4>
             <div className="items">
             <ul>
             {
@@ -55,10 +60,13 @@ const hotelDate= !l._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
          
          
             </div>
-        <div className="desc2">
-          
-              <div className='buyer'>Number of Services : {l.services.length}</div>
+        <div className="des2">
+        <div className="reveiw"><img src="/star-fill.png"/><p>{(l.starValue /l.starQunatity) ||0 }</p>
+            <p>({l.starQunatity ||0})</p>
+            </div> 
+              <div className='buyer'>Total Services -{l.services.length}</div>
           </div>
+
           <div className="date">Hotel registered at :{hotelDate}</div>
           </motion.div>
   )

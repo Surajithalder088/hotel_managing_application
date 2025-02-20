@@ -82,17 +82,16 @@ const Receipt = () => {
 
     <div className="receiptBody">
       <div className="first">
-    <h2> Receipt Generated for Service : {receipt.serviceId.map(i=>i)}</h2>
+    <h2> Receipt Generated for Service : <div className="id">{receipt.serviceId.map(i=><h5>{i}</h5>)}</div> </h2>
 
       <p> <div className="variable">Receipt id :</div>{receipt._id}</p>
-      <p><div className="variable">service.Type: </div>{receipt.type}</p>
-      <p><div className="variable">Provider Name: </div>{receipt.hotelName}</p>
-      <p><div className="variable">hotel Registered at : </div>{hotelDate}</p>
+      <p><div className="variable">service Type: </div>{receipt.type}</p>
+      <p><div className="variable">receipt generated at : </div>{receiptDate}</p>
       
         <p><div className="variable">Total payable Price: </div>
       <img src="/rupee-indian.png" className="rupee"/>
       {receipt.price}</p>
-      <p><div className="variable">Service Details: </div>{receipt.details}</p>
+      <div className="variable">Orders Details: </div>{receipt.details.map(i=><p>{i}</p>)}
       </div>
       <div className="second">
     
@@ -118,7 +117,10 @@ const Receipt = () => {
         <div className="pending"></div>
       }
      </div>
-      <p><div className="variable">receipt generated at : </div>{receiptDate}</p>
+     <p><div className="variable">Hotel Id : </div>{receipt.hotelName}</p>
+     <p><div className="variable">hotel Registered at : </div>{hotelDate}</p>
+     
+      <p>Customer Id : {receipt.buyer}</p>
      <div className="reviewbox">
       {
         receipt.reviewed?(
