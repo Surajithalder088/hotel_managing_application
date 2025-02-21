@@ -1,8 +1,12 @@
 "use client"
 import Navbar from "./{component}/Navbar/page";
 
+import  { Metadata } from "next";
 import { Provider } from "react-redux";
 import { store } from "@/lib/store/store";
+
+
+
 
 export default function RootLayout({ children }) {
   return (

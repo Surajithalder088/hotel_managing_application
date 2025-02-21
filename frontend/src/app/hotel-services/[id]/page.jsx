@@ -82,7 +82,7 @@ const handleSubmit=async(e)=>{
             <p  className="aboute">This hotel is Registered at : {hotel.createdAt}</p>
       </div> <div className="edit">
         <Link href={`/hotel-edit/${id}`}>
-        edit
+        <img src="/pencil-fill.svg"/>
 </Link>
 
       </div>

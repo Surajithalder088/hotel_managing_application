@@ -4,7 +4,7 @@ import "./style.css"
 import { CircularProgress, LinearProgress } from '@mui/material'
 import { useParams } from 'next/navigation'
 import React ,{useEffect, useState} from 'react'
-
+import {TypeAnimation} from 'react-type-animation'
 import { services } from "@/assets/service"
 import Service from "@/app/{component}/Service/page"
 import Navbar from "@/app/{component}/Navbar/page"
@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation"
 import { clearCart } from "@/lib/features/orderCart/orderCartSlice"
 import { receiptCreate } from "@/utils/api"
 import Loading from "@/app/{component}/Loading/page"
+import Speech from "@/app/{component}/Speech/page"
 
 
 
@@ -55,6 +56,10 @@ const api=process.env.NEXT_PUBLIC_API_URL
 e.preventDefault()
 
     try{
+      if(orderCart.item.length===0){
+        return alert("Select atleast one item 1");
+        
+      }
       setOrdering(true)
        let price=orderCart.totalPrice
     let services=orderCart.items.map(item=>item.id)
@@ -197,6 +202,23 @@ e.preventDefault()
             <p>({hotel.starQunatity})</p>
             </div> 
 
+            <div className="textH">
+     <div className="textIconH">
+      <img src="/group-line.svg"/>
+     </div>
+     <div className="textPadH">
+     <TypeAnimation 
+           sequence={[`Search desire items from our Hotel !`, 1000, 'Add as many items to order cart!', 1000]}
+           wrapper='span'
+           speed={35}
+           deletionSpeed={85}
+           style={{fontSize: '20px',fontFamily:'cursive',color:"black"}}
+           repeat={Infinity}
+           />
+     </div>
+     
+   </div>
+
         </div>
         )
       }
@@ -245,6 +267,11 @@ e.preventDefault()
 
         </div>
     </div>
+
+
+  
+
+
     {
       (filterServices.length===0)?(
         <div className="allservices">

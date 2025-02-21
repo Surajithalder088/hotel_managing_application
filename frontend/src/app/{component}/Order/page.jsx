@@ -16,16 +16,18 @@ const Order = ({item}) => {
                </div>
                <div className="data">
                <p> <div className="variable">service type : </div>{item.type}</p>
-               <p><div className="variable">Price : </div>
+              <p><div className="variable">Price : </div>
                 <img src='/rupee-indian.png' className='rupee'/>
                 {item.price}</p>
                
-               <p><div className="variable">payment</div>{item.paid?"paid":"pending"}</p>
+               <p><div className="payable"> 
+                <div className="variable">payment : </div>{item.paid?"paid":"pending"}
                {
                 item.paid?<div className="donee"></div>
                 :
                 <div className="pendingg"></div>
-               }
+               }</div></p>
+
                <p><div className="variable">Service Taken :</div>{item.details}</p>
                <p><div className="variable">Order Date :</div>{orderDate}</p>
                </div>

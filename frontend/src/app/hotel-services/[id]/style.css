@@ -117,3 +117,19 @@
     display: flex;
     flex-wrap: wrap;
 }
+.edit{
+    background-color: #644588;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+.edit img{
+    width: 25px;
+    height: 25px;
+}
+.edit:hover{
+    background-color: #fff;
+}

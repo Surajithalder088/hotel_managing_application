@@ -22,6 +22,7 @@ import Loading from "./{component}/Loading/page";
 import HotelRoom from "./{component}/Hotel-room/page";
 import HotelReastaurant from "./{component}/Hotel-Restaurant/page";
 import { useSelector } from "react-redux";
+import Speech from "./{component}/Speech/page";
 
 const api=process.env.NEXT_PUBLIC_API_URL
 
@@ -113,7 +114,7 @@ const authUser=useSelector((state)=>state.authUser.type)
  
  
     
-  }, [])
+  }, [authUser])
   
   return (
    <div className="home">
@@ -256,6 +257,14 @@ const authUser=useSelector((state)=>state.authUser.type)
       
       
     </div>
+    <div className="text">
+      <div className="textPad">
+        <Speech/>
+      </div>
+      <div className="textIcon">
+        <img src='/user-received-2-line.svg'/>
+      </div>
+    </div>
 
     {
       hotelList.length===0?
@@ -290,6 +299,8 @@ const authUser=useSelector((state)=>state.authUser.type)
     </motion.div>
      )
     }
+
+    
    </div>
   );
 }

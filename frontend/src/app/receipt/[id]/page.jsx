@@ -7,6 +7,7 @@ import "./style.css"
 import axios from 'axios'
 import {format} from 'date-fns'
 import { CircularProgress } from "@mui/material";
+import Loading from "@/app/{component}/Loading/page";
 
 
 
@@ -74,7 +75,7 @@ const Receipt = () => {
     {
      (receipt.length===0)?(
         <div className="receiptBody">
-          <p> no details fetched</p>
+          <Loading />
         </div>
       ) :(
 
