@@ -15,7 +15,7 @@ const Order = ({item}) => {
                <p>{}</p>
                </div>
                <div className="data">
-               <p> <div className="variable">service type : </div>{item.type}</p>
+               
               <p><div className="variable">Price : </div>
                 <img src='/rupee-indian.png' className='rupee'/>
                 {item.price}</p>

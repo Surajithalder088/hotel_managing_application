@@ -109,12 +109,11 @@ const authUser=useSelector((state)=>state.authUser.type)
   useEffect(() => {
    
 
- fetchAllHotels()
- console.log(authUser);
+      fetchAllHotels()
+     console.log(authUser);
  
  
-    
-  }, [authUser])
+    }, [authUser])
   
   return (
    <div className="home">
@@ -290,8 +289,8 @@ const authUser=useSelector((state)=>state.authUser.type)
         </div>
         </>:
         filterData.map(hotel=>(
-         searchTerm==='room'?(<HotelRoom l={hotel} key={hotel._id}/>):
-         ( <HotelReastaurant l={hotel} key={hotel._id}/>)
+         searchTerm==='room'?(<HotelRoom l={hotel} key={hotel?._id}/>):
+         ( <HotelReastaurant l={hotel} key={hotel?._id}/>)
        
         ))
       }

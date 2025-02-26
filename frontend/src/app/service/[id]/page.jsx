@@ -143,8 +143,9 @@ const Service = () => {
         animate='animate'
         className="abouteService">
       <div className="id"> Service id :{id}</div> 
-        <p><div className="value">Service provided : </div>{service.type}</p>
-       <p><div className="value">{service.name}</div></p>
+        <h2><div className="value">{service.name}</div></h2>
+        <p><div className="value">Service type: </div>{service.type}</p>
+     
         <p><div className="value"> Price : </div>{service.price}</p>
         <p><div className="value"> Details of the Service : </div>{service.details}</p>
         <span> Service generated at : {serviceDate}</span>
@@ -163,13 +164,14 @@ const Service = () => {
 
        <div className="reviewContainer">
         <h3>Customer Ratings:</h3>
+        <hr/>
         <div className="reviewList">
         {
           reviews.map(r=>(
             <div className="review" key={r._id}>
-              <p>customer id :{r.user}</p>
-              <p>star : {r.ratings}</p>
-              <p>{r.text}</p>
+              <p>customer-id :<span>{r.user}</span></p>
+              <p><img src="/star-line.png" /> {r.ratings}</p>
+              <p>------{r.text}</p>
             </div>
           ))
         }

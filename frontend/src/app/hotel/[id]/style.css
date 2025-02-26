@@ -1,7 +1,7 @@
 .hotelContainer{
     margin: 0;
     padding: 0;
-    background: #bb91eb;
+    background: #cdb3eb;
 
 }
 .navbar{
@@ -11,7 +11,7 @@
 }
 .filters{
    width: 100vw;
-   background-color: #bb91eb;
+   background-image: linear-gradient(45deg,  #000000 0%,  #ffffff 100%);
    height: 3rem;
    position: fixed;
    display: flex;
@@ -31,7 +31,8 @@
 }
 .aboutehotelContainer{
     margin: 2rem 0 2rem  0;
-    background: #644588;
+    background-image: linear-gradient(45deg,  #6407a1 0%,  #ffffff 100%);
+   
     color: #fff;
     height: 45vh;
     display: flex;
@@ -136,6 +137,7 @@
 .allservices{
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
 }
 .allservices h1{
    font-family: monospace;

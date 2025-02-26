@@ -56,10 +56,7 @@ const api=process.env.NEXT_PUBLIC_API_URL
 e.preventDefault()
 
     try{
-      if(orderCart.item.length===0){
-        return alert("Select atleast one item 1");
-        
-      }
+     
       setOrdering(true)
        let price=orderCart.totalPrice
     let services=orderCart.items.map(item=>item.id)

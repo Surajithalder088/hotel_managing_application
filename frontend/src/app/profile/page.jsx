@@ -70,15 +70,18 @@ const Profile = () => {
 
         (
 
-        
-      <div className="user">
-        <p>{user.email} </p>
+       <div className="user">
+      <div  className="userinfo">
+        <p>Email - {user.email} </p>
+        <p>Id -{user._id}</p>
         <p>total orders :{user.receipts.length}</p>
         <p>acb road, kol-768906</p>
-        <button className="btn"
+        
+      </div >
+      <button className="logout"
         onClick={logOut}
         >Logout</button>
-      </div>
+      </div> 
       )
       }
       {
@@ -91,7 +94,7 @@ const Profile = () => {
         
 
       <div className="receipts">
-        <h4>Order history</h4>
+        <h2>Order history</h2>
           {
             receiptList.map((item)=>
               ( <Link href={`/receipt/${item._id}`}>
