@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import "./style.css"
 import homeIcon from '../../../../public/home-2-fill.png'

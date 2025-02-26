@@ -1,3 +1,5 @@
+"use client"
+
 import { CircularProgress, LinearProgress } from '@mui/material'
 import React from 'react'
 import "./style.css"

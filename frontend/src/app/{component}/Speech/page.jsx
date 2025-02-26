@@ -1,3 +1,5 @@
+"use client"
+
 import {TypeAnimation} from 'react-type-animation'
 import { motion } from 'motion/react'
 

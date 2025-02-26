@@ -1,9 +1,11 @@
+"use client"
+
 import Link from 'next/link'
 import React, { useRef } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
 import { format } from "date-fns";
-import next from 'next'
+
 
 
 
