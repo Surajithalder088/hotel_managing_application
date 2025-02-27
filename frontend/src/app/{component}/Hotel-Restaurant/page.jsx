@@ -28,10 +28,10 @@ const HotelReastaurant = ({l}) => {
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})
-const itemTypes=[...new Set(l.services.filter(service=>service.type==='restaurant').map(service=>service.itemType))]
+const itemTypes=[...new Set(l?.services.filter(service=>service.type==='restaurant').map(service=>service.itemType))]
 
-const hotelDate= !l._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
-    format(new Date(l.createdAt ),'dd MMM yyyy,hh:mm a')
+const hotelDate= !l?._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
+    format(new Date(l?.createdAt ),'dd MMM yyyy,hh:mm a')
   return (
     <motion.div 
     variants={divVariant}

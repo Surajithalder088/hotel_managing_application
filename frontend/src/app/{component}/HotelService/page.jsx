@@ -34,7 +34,7 @@ const deleteHandler =async(e)=>{
   try{
 
  
-   const res= await axios.delete(api+`/api/service/service-delete/${l._id}`,{withCredentials:true})
+   const res= await axios.delete(api+`/api/service/service-delete/${l?._id}`,{withCredentials:true})
    console.log(res.data);
    window.location.reload()
    alert("Deleted the Service")
