@@ -32,7 +32,7 @@ app.post('/create-payment-intent',async(req,res)=>{
     const {amount}=req.body
     try {
         const paymentIntent=await stripe.paymentIntents.create({
-            amount:100,
+            amount:100,// 100 cents == 1 $
             currency:'usd',
             payment_method_types:["card"]
         })
