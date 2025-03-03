@@ -258,11 +258,15 @@ const authUser=useSelector((state)=>state.authUser.type)
     </div>
     <div className="text">
       <div className="textPad">
+        <div className="textIcon1">
+        <img src='/happy-svgrepo-com.png'/>
+      </div>
         <Speech/>
       </div>
-      <div className="textIcon">
+      <div className="textIcon2">
         <img src='/user-received-2-line.svg'/>
       </div>
+      
     </div>
 
     {
@@ -288,9 +292,11 @@ const authUser=useSelector((state)=>state.authUser.type)
           <h2>No data has been fetched based on your filter</h2>
         </div>
         </>:
-        filterData.map(hotel=>(
-         searchTerm==='room'?(<HotelRoom l={hotel} key={hotel?._id}/>):
-         ( <HotelReastaurant l={hotel} key={hotel?._id}/>)
+
+        filterData.map((hotel ,id)=>(
+         searchTerm!=='room'?( <HotelReastaurant l={hotel} key={id}/>):
+         (<HotelRoom l={hotel} key={id}/>)
+         
        
         ))
       }

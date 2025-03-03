@@ -9,6 +9,7 @@ import { format } from "date-fns";
 
 
 
+
 const divVariant={
   initial:{
     y:100,
@@ -37,7 +38,7 @@ const hotelDate= !l?._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
     variants={divVariant}
     animate={"animate"}
     initial='initial'
-    key={l._id} className="serviceContainer" ref={ref}>
+     className="serviceContainer" ref={ref}>
       <Link href={`/hotel/${l._id}`}>
         <div className='hotelname'>{l.name}</div>
         </Link>

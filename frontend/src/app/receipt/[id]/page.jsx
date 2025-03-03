@@ -20,7 +20,7 @@ const Receipt = () => {
 
       const [receipt,setReceipt]=useState([])
       const [service,setService]=useState([])
-      
+      const [hoteldata,setHoteldata]=useState({})
       const[starvalue,setStarvalue]=useState(1)
       const [reviewText,setReviewText]=useState("default review")
       const starArray=[1,2,3,4,5]
@@ -29,9 +29,10 @@ const Receipt = () => {
 
       const fetchReceiptDetails= async()=>{
        const data= await axios.get(api+`/api/receipt/${id}`,{withCredentials:true})
-       console.log(data.data.receipt);
+       console.log(data.data);
        setReceipt(data.data.receipt)
        setService(data.data.service)
+       setHoteldata(data.data.hotel)
        
       }
    useEffect(() => {
@@ -94,6 +95,7 @@ const Receipt = () => {
       {receipt.price}</p>
       <div className="variable">Orders Details: </div>{receipt.details.map(i=><p>{i}</p>)}
       </div>
+
       <div className="second">
     
       
@@ -111,14 +113,16 @@ const Receipt = () => {
         :""
       }
       <div className="price">
-      <p><div className="variable">paid : </div>{paid?"yes":"no"}</p>
+      <p><div className="variable">paid : </div>{receipt.paid?"yes":"no"}</p>
       {
         receipt.paid? <div className="done"></div>
         :
         <div className="pending"></div>
       }
      </div>
-     <p><div className="variable">Hotel Id : </div>{receipt.hotelName}</p>
+     <p><div className="variable">Hotel Name: </div> <div className="nam">{hoteldata.name}</div>({hoteldata.email})</p>
+     <p><div className="">Hotel Id : </div>{receipt.hotelName}</p>
+     <p><div className="">Address:</div>{hoteldata.address}</p>
      <p><div className="variable">hotel Registered at : </div>{hotelDate}</p>
      
       <p>Customer Id : {receipt.buyer}</p>

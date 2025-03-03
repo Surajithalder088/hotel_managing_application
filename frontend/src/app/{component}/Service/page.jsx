@@ -106,8 +106,9 @@ useEffect(() => {
         </div>
        
             <div className="desc1">
-            <div className=''> {l.name}</div>
-            <div className='type'> {l.itemType}</div>
+            
+            <div className='type'>{l.name}</div>
+            <div className=''>  {l.itemType}</div>
           <div className='details'>
             <p className="para">Description of the service : </p>{l.details}
             </div>
@@ -117,7 +118,7 @@ useEffect(() => {
           <div className='price'>
             <img src='/rupee-indian.png' className='rupee'/>
               {!add?l.price:l.price*number} </div>
-          <div className='buyer'>Number of Buyer : {l.buyer.length}</div>
+          
           </div>
         <Link className='link' href={`/service/${l._id}`}>
         <button className='btn'>View Details</button>

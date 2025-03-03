@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useRef } from 'react'
 import "./style.css"
 import { motion, useInView } from 'motion/react'
-import { redirect } from 'next/dist/server/api-utils'
+
 import axios from 'axios'
 const api=process.env.NEXT_PUBLIC_API_URL
 
@@ -33,7 +33,7 @@ const deleteHandler =async(e)=>{
   e.preventDefault()
   try{
 
- 
+      if(!l._id) return
    const res= await axios.delete(api+`/api/service/service-delete/${l?._id}`,{withCredentials:true})
    console.log(res.data);
    window.location.reload()

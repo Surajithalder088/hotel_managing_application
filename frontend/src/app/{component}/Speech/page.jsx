@@ -10,9 +10,9 @@ const Speech = () => {
             <TypeAnimation 
             sequence={['Find best Hotels of your location', 1000, 'Search Hotels by desire filters', 1000]}
             wrapper='span'
-            speed={55}
+            speed={35}
             deletionSpeed={85}
-            style={{fontSize: '25px',fontFamily:'cursive'}}
+            style={{fontSize: '20px',fontFamily:'cursive'}}
             repeat={Infinity}
             />
             
