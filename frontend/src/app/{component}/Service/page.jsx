@@ -26,6 +26,12 @@ const divVariant={
 
 
 const Service = ({l}) => {
+  if(!l || !l._id ||!l.name){
+    console.error(" invalid data",l)
+    return<p>
+       invalid service data
+    </p>
+  }
 
   const dispatch =useDispatch()
 
@@ -34,6 +40,9 @@ const   isInView=useInView(ref,{margin:"-200px"})
 
 const [add,setAdd]=useState(false)
 const [number,setNumber]=useState(1)
+
+
+
 function qunatityHandler(){
  
   dispatch(updateQuantity({id:l._id,quantity:number+1}))
@@ -46,7 +55,13 @@ useEffect(() => {
     setAdd(false)
     setNumber(1)
   }
+ 
+  
 }, [orderCart])
+
+
+
+
 
   return (
     <motion.div 
@@ -108,10 +123,22 @@ useEffect(() => {
             <div className="desc1">
             
             <div className='type'>{l.name}</div>
-            <div className=''>  {l.itemType}</div>
+            <div className='itemType'>  ({l.itemType})</div>
+          {
+          
+            l.type==="room"?(<div className="image_service">
+              <img className="image_service" src={l.image?.length>10?l.image:"/room_image.jpg"}/>
+            </div>):(<div className="image_service">
+              <img className="image_service" src={l.image?.length>10?l.image:"/food_image.jpg"}/>
+            </div>)
+          }
+             
+
           <div className='details'>
             <p className="para">Description of the service : </p>{l.details}
             </div>
+
+           
          
             </div>
         <div className="desc2">

@@ -5,6 +5,12 @@ import "./style.css"
 import { format } from 'date-fns'
 
 const Order = ({item}) => {
+  if(!item || !item._id){
+    console.error(" invalid data",item)
+    return<p>
+       invalid receipt data
+    </p>
+  }
 
    const orderDate= !item._id ? format(new Date( Date.now()),'dd MMM yyyy,hh:mm a') :
       format(new Date(item.createdAt ),'dd MMM yyyy,hh:mm a')

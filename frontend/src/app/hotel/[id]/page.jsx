@@ -279,7 +279,8 @@ e.preventDefault()
      
     <div className="allservices">
    {
-        filterServices.map(service=>(
+        filterServices.filter((service)=>service && service._id && service.name)
+        .map(service=>(
        <Service l={service} key={service._id} />
         ))
         

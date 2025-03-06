@@ -48,12 +48,28 @@ export default function Home() {
   const [roomSearch,setroomSearch]=useState(false)
   const [restuarantSearch,setRestuarantSearch]=useState(false)
   const [services,setServices]=useState([])
-  const [hotelList,setHotelList]=useState([])
+ 
   const [roomLoc,setRoomLoc]=useState("")
   const [roomType,setRoomType]=useState("")
   const [roomPrice,setRoomPrice]=useState(0)
   const[filter,setfilter]=useState(false)
 
+ const [hotelList,setHotelList]=useState([])
+
+const dummyhotel=  {
+  _id:"",
+  name:"",
+  address:"",
+  image:"",
+  email:"",
+  password:"",
+  createdAt:"",
+  starQuantity:"",
+  starValue:"",
+  updatedAt:"",
+  _v:"",
+  services:[{}]
+}
 
   // filtering hotels based on their location ,service itemType and price
   let filterData=filter===false?hotelList :
@@ -293,9 +309,10 @@ const authUser=useSelector((state)=>state.authUser.type)
         </div>
         </>:
 
-        filterData.map((hotel ,id)=>(
-         searchTerm!=='room'?( <HotelReastaurant l={hotel} key={id}/>):
-         (<HotelRoom l={hotel} key={id}/>)
+        filterData.filter((hotel)=>hotel && hotel._id)
+        .map((hotel ,id)=>(
+         searchTerm!=='room'?( <HotelReastaurant l={hotel} key={hotel._id}/>):
+         (<HotelRoom l={hotel} key={hotel._id}/>)
          
        
         ))

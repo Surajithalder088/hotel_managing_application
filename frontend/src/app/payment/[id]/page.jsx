@@ -52,7 +52,7 @@ const Payment = () => {
   console.log(data.data.receipt);
   setOrder(data.data.receipt)
   setPrice(order.price)
-  fetchingPaymentIntent()
+  //fetchingPaymentIntent()
  } catch (error) {
   console.log(error);
   
@@ -88,14 +88,10 @@ const Payment = () => {
   return (
     
    <>
-    <Elements stripe={stripePromise}>
+ 
 
-    
-    <div className="cardid">Payment for Receipt Id  :{id}</div>
-    <h2>Make Payment </h2>
-      <span>Fill your debit card details:</span>
-      <span>Total Payable price :${order.price} /-usd</span>
-   {clientSecret ? 
+    {/*
+    clientSecret ? 
    <div className="stripe">
    <Checkout  clientSecret={clientSecret}id={id}/>
    </div>
@@ -104,10 +100,12 @@ const Payment = () => {
     <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
       <p>Payment form will be available soon !</p>
     <Loader2 className="loader"/></div>
-    }
+    */}
+    
    
-  { 
-  /* <div className="paymentContainer">
+   
+   
+   <div className="paymentContainer">
     <div className="cardid">Payment for Receipt Id  :{id}</div>
     
     
@@ -128,9 +126,9 @@ const Payment = () => {
       
       <div className="upi" onClick={()=>alert('G pay is under construction')}>pay using <span className="gpay">GPay</span> </div>
     </div>
-    </div>*/}
+    </div>
     
-    </Elements>
+  
     </>
   )
 }

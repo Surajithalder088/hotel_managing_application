@@ -1,1 +1,204 @@
-{"version":3,"pages404":true,"caseSensitive":false,"basePath":"","redirects":[{"source":"/:path+/","destination":"/:path+","internal":true,"statusCode":308,"regex":"^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"}],"headers":[],"dynamicRoutes":[{"page":"/edit-service/[id]","regex":"^/edit\\-service/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/edit\\-service/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/hotel/[id]","regex":"^/hotel/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/hotel/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/hotel-edit/[id]","regex":"^/hotel\\-edit/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/hotel\\-edit/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/hotel-orders/[id]","regex":"^/hotel\\-orders/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/hotel\\-orders/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/hotel-services/[id]","regex":"^/hotel\\-services/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/hotel\\-services/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/payment/[id]","regex":"^/payment/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/payment/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/receipt/[id]","regex":"^/receipt/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/receipt/(?<nxtPid>[^/]+?)(?:/)?$"},{"page":"/service/[id]","regex":"^/service/([^/]+?)(?:/)?$","routeKeys":{"nxtPid":"nxtPid"},"namedRegex":"^/service/(?<nxtPid>[^/]+?)(?:/)?$"}],"staticRoutes":[{"page":"/","regex":"^/(?:/)?$","routeKeys":{},"namedRegex":"^/(?:/)?$"},{"page":"/_not-found","regex":"^/_not\\-found(?:/)?$","routeKeys":{},"namedRegex":"^/_not\\-found(?:/)?$"},{"page":"/favicon.ico","regex":"^/favicon\\.ico(?:/)?$","routeKeys":{},"namedRegex":"^/favicon\\.ico(?:/)?$"},{"page":"/hotel-login","regex":"^/hotel\\-login(?:/)?$","routeKeys":{},"namedRegex":"^/hotel\\-login(?:/)?$"},{"page":"/hotel-register","regex":"^/hotel\\-register(?:/)?$","routeKeys":{},"namedRegex":"^/hotel\\-register(?:/)?$"},{"page":"/login","regex":"^/login(?:/)?$","routeKeys":{},"namedRegex":"^/login(?:/)?$"},{"page":"/profile","regex":"^/profile(?:/)?$","routeKeys":{},"namedRegex":"^/profile(?:/)?$"},{"page":"/register","regex":"^/register(?:/)?$","routeKeys":{},"namedRegex":"^/register(?:/)?$"},{"page":"/{component}/Hotel-Restaurant","regex":"^/\\{component\\}/Hotel\\-Restaurant(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Hotel\\-Restaurant(?:/)?$"},{"page":"/{component}/Hotel-room","regex":"^/\\{component\\}/Hotel\\-room(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Hotel\\-room(?:/)?$"},{"page":"/{component}/HotelService","regex":"^/\\{component\\}/HotelService(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/HotelService(?:/)?$"},{"page":"/{component}/Loading","regex":"^/\\{component\\}/Loading(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Loading(?:/)?$"},{"page":"/{component}/Navbar","regex":"^/\\{component\\}/Navbar(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Navbar(?:/)?$"},{"page":"/{component}/Order","regex":"^/\\{component\\}/Order(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Order(?:/)?$"},{"page":"/{component}/Service","regex":"^/\\{component\\}/Service(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Service(?:/)?$"},{"page":"/{component}/Speech","regex":"^/\\{component\\}/Speech(?:/)?$","routeKeys":{},"namedRegex":"^/\\{component\\}/Speech(?:/)?$"}],"dataRoutes":[],"rsc":{"header":"RSC","varyHeader":"RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch","prefetchHeader":"Next-Router-Prefetch","didPostponeHeader":"x-nextjs-postponed","contentTypeHeader":"text/x-component","suffix":".rsc","prefetchSuffix":".prefetch.rsc"},"rewrites":[]}
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/edit-service/[id]",
+      "regex": "^/edit\\-service/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/edit\\-service/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/hotel/[id]",
+      "regex": "^/hotel/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/hotel/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/hotel-edit/[id]",
+      "regex": "^/hotel\\-edit/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/hotel\\-edit/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/hotel-orders/[id]",
+      "regex": "^/hotel\\-orders/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/hotel\\-orders/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/hotel-services/[id]",
+      "regex": "^/hotel\\-services/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/hotel\\-services/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/payment/[id]",
+      "regex": "^/payment/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/payment/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/receipt/[id]",
+      "regex": "^/receipt/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/receipt/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/service/[id]",
+      "regex": "^/service/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/service/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/hotel-login",
+      "regex": "^/hotel\\-login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hotel\\-login(?:/)?$"
+    },
+    {
+      "page": "/hotel-register",
+      "regex": "^/hotel\\-register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hotel\\-register(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/profile",
+      "regex": "^/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/profile(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/{component}/CheckoutForm",
+      "regex": "^/\\{component\\}/CheckoutForm(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/CheckoutForm(?:/)?$"
+    },
+    {
+      "page": "/{component}/Hotel-Restaurant",
+      "regex": "^/\\{component\\}/Hotel\\-Restaurant(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Hotel\\-Restaurant(?:/)?$"
+    },
+    {
+      "page": "/{component}/Hotel-room",
+      "regex": "^/\\{component\\}/Hotel\\-room(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Hotel\\-room(?:/)?$"
+    },
+    {
+      "page": "/{component}/HotelService",
+      "regex": "^/\\{component\\}/HotelService(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/HotelService(?:/)?$"
+    },
+    {
+      "page": "/{component}/Loading",
+      "regex": "^/\\{component\\}/Loading(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Loading(?:/)?$"
+    },
+    {
+      "page": "/{component}/Navbar",
+      "regex": "^/\\{component\\}/Navbar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Navbar(?:/)?$"
+    },
+    {
+      "page": "/{component}/Order",
+      "regex": "^/\\{component\\}/Order(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Order(?:/)?$"
+    },
+    {
+      "page": "/{component}/Service",
+      "regex": "^/\\{component\\}/Service(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Service(?:/)?$"
+    },
+    {
+      "page": "/{component}/Speech",
+      "regex": "^/\\{component\\}/Speech(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/\\{component\\}/Speech(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}

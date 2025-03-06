@@ -15,6 +15,7 @@ const EditService = () => {
     const [price,setPrice]=useState("")
     const [details,setDetails]=useState("")
     const [hotel,setHotel]=useState("")
+    const [image,setImage]=useState("")
     const [load,setLoad]=useState(false)
 
     const serviceByid=async()=>{
@@ -27,6 +28,7 @@ const EditService = () => {
       setPrice(res.data.service.price)
       setDetails(res.data.service.details)
       setHotel(res.data.service.hotel._id)
+      setImage(res.data.service.image)
     }catch(error){
       alert("Unauthorized")
     }
@@ -40,7 +42,7 @@ const EditService = () => {
       e.preventDefault()
       try{    
         setLoad(true)
-     const res= await axios.put(api+`/api/service/service-update/${id}`,{name,price,details},{withCredentials:true})
+     const res= await axios.put(api+`/api/service/service-update/${id}`,{name,price,details,image},{withCredentials:true})
      console.log(res.data);
      window.history.back()
      redirect(`../../hotel-services/${hotel}`)
@@ -68,9 +70,19 @@ const EditService = () => {
             setName(e.target.value)
           }}
           /></div>
+           <div className="input">
+          <p>Image:</p>
+          <input type='text'
+           placeholder='Past a image link'          
+          value={image}
+          onChange={(e)=>{
+            setImage(e.target.value)
+          }}
+          /></div>
             <div className="input">
           <p>Price:</p>
            <input type='number'
+
           value={price}
           onChange={(e)=>{
             setPrice(e.target.value)

@@ -68,12 +68,16 @@
    
     padding: 10px;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     font-size: 20px;
 }
 .type{
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 25px;
     background: #000;
     color: #ecd9d9;
@@ -90,13 +94,30 @@
     padding: 8px;
     cursor: grab;
 }
+.itemType{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
 .details{
-
+    font-size: 15px;
     flex:3
 }
 .para{
     font-weight: bold;
+    font-size: 15px;
 }
+
+.image_service{
+    height:80px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+     border-radius: 10px;
+}
+
 .desc2{
     background-color: rgb(19, 151, 90);
     padding: 10px;

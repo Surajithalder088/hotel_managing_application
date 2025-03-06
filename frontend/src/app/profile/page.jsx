@@ -35,6 +35,7 @@ const Profile = () => {
 
   const fetchUserProfile=async()=>{
     const data=  await axios.get(api+`/api/customer/profile`,{withCredentials:true})
+    console.log(data.data);
     
     setUser(data.data.authUser)
     setReceiptList(data.data.receipts)
@@ -96,7 +97,8 @@ const Profile = () => {
       <div className="receipts">
         <h2>Order history</h2>
           {
-            receiptList.map((item)=>
+            receiptList.filter((item)=>item && item._id)
+            .map((item)=>
               ( <Link href={`/receipt/${item._id}`}>
 
                 <Order key={item._id} item={item}/>

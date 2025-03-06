@@ -172,7 +172,8 @@ const handleSubmit=async(e)=>{
     <div className="allservices">
      
    {
-        services.map(service=>(
+        services.filter((service)=>service && service._id)
+        .map(service=>(
        <Service l={service} key={service._id} />
         ))
         

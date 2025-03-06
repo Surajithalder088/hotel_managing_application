@@ -24,6 +24,12 @@ const divVariant={
 }
 
 const HotelRoom = ({l}) => {
+  if(!l || !l._id){
+    console.error(" invalid data",l)
+    return<p>
+       invalid hotel data
+    </p>
+  }
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})

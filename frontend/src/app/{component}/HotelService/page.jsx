@@ -25,6 +25,12 @@ const divVariant={
 }
 
 const Service = ({l}) => {
+  if(!l || !l._id){
+    console.error(" invalid data",l)
+    return<p>
+       invalid service  data
+    </p>
+  }
 
 const ref=useRef()
 const   isInView=useInView(ref,{margin:"-200px"})

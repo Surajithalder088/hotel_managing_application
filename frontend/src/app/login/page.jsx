@@ -28,7 +28,7 @@ const login = () => {
        console.log(data.existingUser);
        
       dispatch(userAuth(data.existingUser.email))
-       route.push('/')
+       route.push('/profile')
      }catch(error){
         console.log(error);
         
